@@ -1,0 +1,17 @@
+{
+  "name": "player",
+  "shape": {
+    "type": "rectangle",
+    "width": 12.375,
+    "height": 26.25,
+    "offset": [
+      10.519017094017109,
+      5.787820512820533
+    ]
+  },
+  "properties": {
+    "collision_layer": 2,
+    "collision_mask": 61
+  },
+  "image_path": "../assets/player/spritesheet.png"
+}

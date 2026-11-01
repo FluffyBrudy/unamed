@@ -1,0 +1,11 @@
+{
+  "typeCheckingMode": "standard",
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": ["."],
+  "diagnosticSeverityOverrides": {
+    "reportUnannotatedClassAttribute": "none",
+    "reportUnusedExpression": "none",
+    "reportMissingTypeStubs": "warning",
+  },
+}

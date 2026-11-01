@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "folders": [],
+  "items": [
+    {
+      "path": "../assets/tilesets/spacetileset.png",
+      "folder": null
+    },
+    {
+      "path": "../assets/enemies/undead_frame_0.png",
+      "folder": null
+    }
+  ]
+}

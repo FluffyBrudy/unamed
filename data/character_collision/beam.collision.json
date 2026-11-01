@@ -1,0 +1,17 @@
+{
+  "name": "beam",
+  "shape": {
+    "type": "rectangle",
+    "width": 6.967521367521368,
+    "height": 2.023931623931624,
+    "offset": [
+      0,
+      3.0017094017094017
+    ]
+  },
+  "properties": {
+    "collision_layer": 2,
+    "collision_mask": 61
+  },
+  "image_path": "../assets/projectiles/beam.png"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "undead",
+  "shape": {
+    "type": "rectangle",
+    "width": 21.908270251877212,
+    "height": 26.727175613540595,
+    "offset": [
+      9.92295140110707,
+      69.39373782800692
+    ]
+  },
+  "properties": {
+    "collision_layer": 4,
+    "collision_mask": 3
+  },
+  "image_path": "../assets/enemies/undead.png"
+}
