@@ -11,6 +11,7 @@ class Character(ICollidableSprite):
         animation_stem: str,
         collision_stem: str,
         default_state: str,
+        eid: int,
     ) -> None:
         self.x = x
         self.y = y
@@ -30,6 +31,7 @@ class Character(ICollidableSprite):
         self.collision_shape = collision_data.shape
 
         self.current_state = default_state
+        self.eid = eid
 
     def get_state(self) -> str:
         raise NotImplementedError()
