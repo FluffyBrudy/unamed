@@ -1,31 +1,13 @@
 {
   "spritesheet_path": "../../assets/player/spritesheet.png",
-  "tile_size": [
-    32,
-    32
-  ],
-  "grid_offset": [
-    0,
-    0
-  ],
+  "tile_size": [32, 32],
+  "grid_offset": [0, 0],
   "animations": {
     "idle": {
       "name": "idle",
       "frames": [
         {
           "variant_id": 0,
-          "duration_ms": 100.0
-        },
-        {
-          "variant_id": 1,
-          "duration_ms": 100.0
-        },
-        {
-          "variant_id": 2,
-          "duration_ms": 100.0
-        },
-        {
-          "variant_id": 3,
           "duration_ms": 100.0
         }
       ],
@@ -61,7 +43,7 @@
         }
       ],
       "loop": true,
-      "fps": 30.0
+      "fps": 60.0
     },
     "jump": {
       "name": "jump",
@@ -208,6 +190,48 @@
         },
         {
           "variant_id": 55,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": false,
+      "fps": 60.0
+    },
+    "idle_turn_left": {
+      "name": "idle_turn_left",
+      "frames": [
+        {
+          "variant_id": 1,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 2,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 3,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": false,
+      "fps": 60.0
+    },
+    "idle_turn_right": {
+      "name": "idle_turn_right",
+      "frames": [
+        {
+          "variant_id": 3,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 2,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 1,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 0,
           "duration_ms": 100.0
         }
       ],

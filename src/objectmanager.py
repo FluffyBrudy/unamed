@@ -1,21 +1,11 @@
 from collections.abc import Callable
-from typing import Any, Protocol, Unpack, runtime_checkable
 
 from pygame.surface import Surface
 from tilemap_parser.runtime.collision.hit import CollisionHit
 from tilemap_parser.runtime.collision.manager import ObjectCollisionManager
 from tilemap_parser.runtime.protocols import ICollidable
 
-
-@runtime_checkable
-class WorldObject(ICollidable, Protocol):
-    eid: int
-
-    def can_kill(self) -> bool: ...
-    def can_hurt(self) -> bool: ...
-    def update(self, dt: float): ...
-    def render(self, surface: Surface, offset: tuple[float, float]): ...
-
+from src.utils import WorldObject
 
 THandler = Callable[[WorldObject, WorldObject, CollisionHit], None]
 

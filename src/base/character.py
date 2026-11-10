@@ -1,9 +1,11 @@
-from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape
+from pygame import Vector2
+from tilemap_parser import AnimationPlayer, flip_character_shape
 
-from src.loader import SharedData
+from src.loader import LevelData, SharedData
+from src.utils import WorldSprite
 
 
-class Character(ICollidableSprite):
+class Character(WorldSprite):
     def __init__(
         self,
         x: float,
@@ -19,6 +21,8 @@ class Character(ICollidableSprite):
         self.vy = 0
         self.on_ground = False
 
+        self.direction = Vector2(0, 0)
+
         animation_set = SharedData().state_animations[animation_stem]
         animations = animation_set.library.animations
         self.fps = {k: animations[k].fps for k in animations}
@@ -33,7 +37,18 @@ class Character(ICollidableSprite):
         self.current_state = default_state
         self.eid = eid
 
+        self.collision_runner = LevelData().collision_runner
+        self.flipped = False
+
+        self.direction = Vector2(1, 0)
+
     def get_state(self) -> str:
+        raise NotImplementedError()
+
+    def can_kill(self) -> bool:
+        raise NotImplementedError()
+
+    def can_hurt(self) -> bool:
         raise NotImplementedError()
 
     def manage_state(self):
@@ -55,7 +70,7 @@ class Character(ICollidableSprite):
         else:
             self.collision_shape = self.original_collision_shape
 
-    def update(self, dt: float):
+    def update_animation(self, dt: float):
         anim_state = self.animation_states[self.current_state]
         fps = self.fps[self.current_state]
         anim_state.update(dt * (fps / 60) * 1000)

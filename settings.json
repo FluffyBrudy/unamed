@@ -8,7 +8,7 @@
     "nodes_path": "nodes",
     "aliases_path": "aliases",
     "alias_scopes": {},
-    "theme": "dark",
+    "theme": "monokai",
     "themes_list": [
         "dark",
         "midnight",
@@ -28,5 +28,6 @@
             "warning",
             "info"
         ]
-    }
+    },
+    "templates_path": "templates"
 }

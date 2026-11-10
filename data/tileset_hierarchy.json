@@ -9,6 +9,10 @@
     {
       "path": "../assets/enemies/undead_frame_0.png",
       "folder": null
+    },
+    {
+      "path": "../assets/player/player_0.png",
+      "folder": null
     }
   ]
 }
