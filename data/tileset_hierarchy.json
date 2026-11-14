@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "folders": [],
+  "items": [
+    {
+      "path": "assets/tileset.png",
+      "folder": null
+    },
+    {
+      "path": "assets/pixramen-valley/dark-knight/dark_knight.png",
+      "folder": null
+    }
+  ]
+}

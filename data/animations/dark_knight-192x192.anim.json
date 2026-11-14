@@ -1,0 +1,478 @@
+{
+  "spritesheet_path": "../assets/pixramen-valley/dark-knight/dark-knight-192x192.png",
+  "tile_size": [
+    192,
+    192
+  ],
+  "grid_offset": [
+    0,
+    0
+  ],
+  "animations": {
+    "air-combo-a": {
+      "name": "air-combo-a",
+      "frames": [
+        {
+          "variant_id": 0,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 1,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 2,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 3,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 4,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 5,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 6,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 7,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "air-combo-b": {
+      "name": "air-combo-b",
+      "frames": [
+        {
+          "variant_id": 11,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 12,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 13,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 14,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 15,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 16,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 17,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 18,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "air_combo_c": {
+      "name": "air_combo_c",
+      "frames": [
+        {
+          "variant_id": 22,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 23,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 24,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 25,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 26,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 27,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 28,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "block": {
+      "name": "block",
+      "frames": [
+        {
+          "variant_id": 33,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 34,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "climb": {
+      "name": "climb",
+      "frames": [
+        {
+          "variant_id": 44,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 45,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 46,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 47,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "dash": {
+      "name": "dash",
+      "frames": [
+        {
+          "variant_id": 55,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 56,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 57,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 58,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 59,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "dead-falling": {
+      "name": "dead-falling",
+      "frames": [
+        {
+          "variant_id": 66,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 67,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "drink-blue-potion": {
+      "name": "drink-blue-potion",
+      "frames": [
+        {
+          "variant_id": 77,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 78,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 79,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 80,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 81,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 82,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 83,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 84,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 85,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 86,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 87,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "drink-green-potion": {
+      "name": "drink-green-potion",
+      "frames": [
+        {
+          "variant_id": 88,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 89,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 90,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 91,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 92,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 93,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 94,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 95,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 96,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 97,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 98,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "drink-red-potion": {
+      "name": "drink-red-potion",
+      "frames": [
+        {
+          "variant_id": 99,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 100,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 101,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 102,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 103,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 104,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 105,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 106,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 107,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 108,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 109,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "fall-recovery": {
+      "name": "fall-recovery",
+      "frames": [
+        {
+          "variant_id": 110,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 111,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "fall": {
+      "name": "fall",
+      "frames": [
+        {
+          "variant_id": 121,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 122,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 123,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 124,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "idle": {
+      "name": "idle",
+      "frames": [
+        {
+          "variant_id": 132,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 133,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "jump": {
+      "name": "jump",
+      "frames": [
+        {
+          "variant_id": 143,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 144,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 145,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 146,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 147,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    },
+    "run": {
+      "name": "run",
+      "frames": [
+        {
+          "variant_id": 242,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 243,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 244,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 245,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 246,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 247,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 248,
+          "duration_ms": 100.0
+        },
+        {
+          "variant_id": 249,
+          "duration_ms": 100.0
+        }
+      ],
+      "loop": true,
+      "fps": 60.0
+    }
+  }
+}

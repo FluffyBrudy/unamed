@@ -1,0 +1,63 @@
+{
+  "prefix": "chest",
+  "sheets": {
+    "chest-57x42.png": {
+      "cell": [
+        57,
+        42
+      ],
+      "rows": 3,
+      "cols": 11
+    }
+  },
+  "animations": [
+    {
+      "name": "blue-chest",
+      "sheet": "chest-57x42.png",
+      "row": 0,
+      "cols": 11,
+      "cell": [
+        57,
+        42
+      ],
+      "content_bounds": [
+        0,
+        0,
+        57,
+        42
+      ]
+    },
+    {
+      "name": "green-chest",
+      "sheet": "chest-57x42.png",
+      "row": 1,
+      "cols": 11,
+      "cell": [
+        57,
+        42
+      ],
+      "content_bounds": [
+        0,
+        0,
+        57,
+        42
+      ]
+    },
+    {
+      "name": "red-chest",
+      "sheet": "chest-57x42.png",
+      "row": 2,
+      "cols": 11,
+      "cell": [
+        57,
+        42
+      ],
+      "content_bounds": [
+        0,
+        0,
+        57,
+        42
+      ]
+    }
+  ]
+}

@@ -1,0 +1,607 @@
+{
+  "prefix": "dark-knight",
+  "sheets": {
+    "dark-knight-168x207.png": {
+      "cell": [
+        168,
+        207
+      ],
+      "rows": 1,
+      "cols": 5
+    },
+    "dark-knight-192x192.png": {
+      "cell": [
+        192,
+        192
+      ],
+      "rows": 23,
+      "cols": 11
+    },
+    "dark-knight-336x105.png": {
+      "cell": [
+        336,
+        105
+      ],
+      "rows": 12,
+      "cols": 13
+    }
+  },
+  "animations": [
+    {
+      "name": "dark-knight-dead-ground",
+      "sheet": "dark-knight-168x207.png",
+      "row": 0,
+      "cols": 5,
+      "cell": [
+        168,
+        207
+      ],
+      "content_bounds": [
+        57,
+        168,
+        57,
+        30
+      ]
+    },
+    {
+      "name": "dark-knight-air-combo-a",
+      "sheet": "dark-knight-192x192.png",
+      "row": 0,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        60,
+        69,
+        90,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-air-combo-b",
+      "sheet": "dark-knight-192x192.png",
+      "row": 1,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        57,
+        66,
+        96,
+        60
+      ]
+    },
+    {
+      "name": "dark-knight-air-combo-c",
+      "sheet": "dark-knight-192x192.png",
+      "row": 2,
+      "cols": 7,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        63,
+        57,
+        81,
+        69
+      ]
+    },
+    {
+      "name": "dark-knight-blocking",
+      "sheet": "dark-knight-192x192.png",
+      "row": 3,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        141,
+        48,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-climb",
+      "sheet": "dark-knight-192x192.png",
+      "row": 4,
+      "cols": 4,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        69,
+        36,
+        63
+      ]
+    },
+    {
+      "name": "dark-knight-dash",
+      "sheet": "dark-knight-192x192.png",
+      "row": 5,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        36,
+        141,
+        75,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-dead-falling",
+      "sheet": "dark-knight-192x192.png",
+      "row": 6,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        81,
+        57,
+        36
+      ]
+    },
+    {
+      "name": "dark-knight-drink-blue-potion",
+      "sheet": "dark-knight-192x192.png",
+      "row": 7,
+      "cols": 11,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        63,
+        135,
+        66,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-drink-green-potion",
+      "sheet": "dark-knight-192x192.png",
+      "row": 8,
+      "cols": 11,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        63,
+        135,
+        66,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-drink-red-potion",
+      "sheet": "dark-knight-192x192.png",
+      "row": 9,
+      "cols": 11,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        63,
+        135,
+        66,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-fall-recovery",
+      "sheet": "dark-knight-192x192.png",
+      "row": 10,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        141,
+        60,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-falling",
+      "sheet": "dark-knight-192x192.png",
+      "row": 11,
+      "cols": 4,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        69,
+        66,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-idle",
+      "sheet": "dark-knight-192x192.png",
+      "row": 12,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        132,
+        60,
+        60
+      ]
+    },
+    {
+      "name": "dark-knight-jump",
+      "sheet": "dark-knight-192x192.png",
+      "row": 13,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        66,
+        66,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-knockback",
+      "sheet": "dark-knight-192x192.png",
+      "row": 14,
+      "cols": 4,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        141,
+        66,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-normal-combo-a",
+      "sheet": "dark-knight-192x192.png",
+      "row": 15,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        45,
+        87,
+        105,
+        60
+      ]
+    },
+    {
+      "name": "dark-knight-normal-combo-b",
+      "sheet": "dark-knight-192x192.png",
+      "row": 16,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        48,
+        90,
+        102,
+        54
+      ]
+    },
+    {
+      "name": "dark-knight-normal-combo-c",
+      "sheet": "dark-knight-192x192.png",
+      "row": 17,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        48,
+        84,
+        102,
+        60
+      ]
+    },
+    {
+      "name": "dark-knight-parry",
+      "sheet": "dark-knight-192x192.png",
+      "row": 18,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        111,
+        111,
+        81
+      ]
+    },
+    {
+      "name": "dark-knight-parry-effect",
+      "sheet": "dark-knight-192x192.png",
+      "row": 19,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        63,
+        111,
+        90
+      ]
+    },
+    {
+      "name": "dark-knight-parry-with-effect",
+      "sheet": "dark-knight-192x192.png",
+      "row": 20,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        63,
+        111,
+        90
+      ]
+    },
+    {
+      "name": "dark-knight-prepare-jump",
+      "sheet": "dark-knight-192x192.png",
+      "row": 21,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        141,
+        60,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-run",
+      "sheet": "dark-knight-192x192.png",
+      "row": 22,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        132,
+        69,
+        60
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-a",
+      "sheet": "dark-knight-336x105.png",
+      "row": 0,
+      "cols": 12,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        124,
+        48,
+        100,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-a-effect",
+      "sheet": "dark-knight-336x105.png",
+      "row": 1,
+      "cols": 4,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        128,
+        54,
+        90,
+        51
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-b",
+      "sheet": "dark-knight-336x105.png",
+      "row": 2,
+      "cols": 10,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        134,
+        57,
+        84,
+        48
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-b-effect",
+      "sheet": "dark-knight-336x105.png",
+      "row": 3,
+      "cols": 4,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        134,
+        57,
+        84,
+        48
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-c",
+      "sheet": "dark-knight-336x105.png",
+      "row": 4,
+      "cols": 13,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        28,
+        12,
+        282,
+        93
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-c-effect",
+      "sheet": "dark-knight-336x105.png",
+      "row": 5,
+      "cols": 5,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        28,
+        12,
+        282,
+        93
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-leap-effect-a",
+      "sheet": "dark-knight-336x105.png",
+      "row": 6,
+      "cols": 4,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        130,
+        90,
+        27,
+        15
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-leap-effect-b",
+      "sheet": "dark-knight-336x105.png",
+      "row": 7,
+      "cols": 3,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        147,
+        93,
+        34,
+        12
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-leap-effect-c",
+      "sheet": "dark-knight-336x105.png",
+      "row": 8,
+      "cols": 3,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        123,
+        87,
+        54,
+        18
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-with-effect-a",
+      "sheet": "dark-knight-336x105.png",
+      "row": 9,
+      "cols": 12,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        124,
+        48,
+        100,
+        57
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-with-effect-b",
+      "sheet": "dark-knight-336x105.png",
+      "row": 10,
+      "cols": 10,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        134,
+        57,
+        84,
+        48
+      ]
+    },
+    {
+      "name": "dark-knight-heavy-combo-with-effect-c",
+      "sheet": "dark-knight-336x105.png",
+      "row": 11,
+      "cols": 13,
+      "cell": [
+        336,
+        105
+      ],
+      "content_bounds": [
+        28,
+        12,
+        282,
+        93
+      ]
+    }
+  ]
+}

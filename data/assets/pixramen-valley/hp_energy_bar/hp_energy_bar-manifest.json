@@ -1,0 +1,143 @@
+{
+  "prefix": "hp_energy_bar",
+  "sheets": {
+    "hp_energy_bar-6x18.png": {
+      "cell": [
+        6,
+        18
+      ],
+      "rows": 2,
+      "cols": 1
+    },
+    "hp_energy_bar-21x21.png": {
+      "cell": [
+        21,
+        21
+      ],
+      "rows": 1,
+      "cols": 1
+    },
+    "hp_energy_bar-48x48.png": {
+      "cell": [
+        48,
+        48
+      ],
+      "rows": 1,
+      "cols": 1
+    },
+    "hp_energy_bar-207x72.png": {
+      "cell": [
+        207,
+        72
+      ],
+      "rows": 1,
+      "cols": 1
+    },
+    "hp_energy_bar-207x108.png": {
+      "cell": [
+        207,
+        108
+      ],
+      "rows": 1,
+      "cols": 1
+    }
+  },
+  "animations": [
+    {
+      "name": "energy-bar",
+      "sheet": "hp_energy_bar-6x18.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        6,
+        18
+      ],
+      "content_bounds": [
+        0,
+        0,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "hp-bar",
+      "sheet": "hp_energy_bar-6x18.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        6,
+        18
+      ],
+      "content_bounds": [
+        0,
+        0,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "energy-icon",
+      "sheet": "hp_energy_bar-21x21.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        21,
+        21
+      ],
+      "content_bounds": [
+        3,
+        0,
+        15,
+        21
+      ]
+    },
+    {
+      "name": "hp-icon",
+      "sheet": "hp_energy_bar-48x48.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        48,
+        48
+      ],
+      "content_bounds": [
+        12,
+        15,
+        21,
+        18
+      ]
+    },
+    {
+      "name": "one-bar-container",
+      "sheet": "hp_energy_bar-207x72.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        207,
+        72
+      ],
+      "content_bounds": [
+        9,
+        15,
+        183,
+        42
+      ]
+    },
+    {
+      "name": "two-bar-container",
+      "sheet": "hp_energy_bar-207x108.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        207,
+        108
+      ],
+      "content_bounds": [
+        9,
+        15,
+        183,
+        81
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "prefix": "demon-heart",
+  "sheets": {
+    "demon-heart-27x36.png": {
+      "cell": [
+        27,
+        36
+      ],
+      "rows": 3,
+      "cols": 1
+    }
+  },
+  "animations": [
+    {
+      "name": "demon-heart-blue",
+      "sheet": "demon-heart-27x36.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        27,
+        36
+      ],
+      "content_bounds": [
+        0,
+        0,
+        27,
+        36
+      ]
+    },
+    {
+      "name": "demon-heart-green",
+      "sheet": "demon-heart-27x36.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        27,
+        36
+      ],
+      "content_bounds": [
+        0,
+        0,
+        27,
+        36
+      ]
+    },
+    {
+      "name": "demon-heart-red",
+      "sheet": "demon-heart-27x36.png",
+      "row": 2,
+      "cols": 1,
+      "cell": [
+        27,
+        36
+      ],
+      "content_bounds": [
+        0,
+        0,
+        27,
+        36
+      ]
+    }
+  ]
+}

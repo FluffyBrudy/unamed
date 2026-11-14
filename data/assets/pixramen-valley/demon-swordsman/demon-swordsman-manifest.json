@@ -1,0 +1,247 @@
+{
+  "prefix": "demon-swordsman",
+  "sheets": {
+    "demon-swordsman-192x192.png": {
+      "cell": [
+        192,
+        192
+      ],
+      "rows": 12,
+      "cols": 14
+    },
+    "demon-swordsman-240x192.png": {
+      "cell": [
+        240,
+        192
+      ],
+      "rows": 2,
+      "cols": 6
+    }
+  },
+  "animations": [
+    {
+      "name": "demon-swordsman-attack-leap",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 0,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        66,
+        60,
+        54
+      ]
+    },
+    {
+      "name": "demon-swordsman-attack-leap-effect",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 1,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        15,
+        165,
+        63,
+        27
+      ]
+    },
+    {
+      "name": "demon-swordsman-charge-stab",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 2,
+      "cols": 14,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        63,
+        132,
+        93,
+        60
+      ]
+    },
+    {
+      "name": "demon-swordsman-dead-falling",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 3,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        60,
+        78,
+        69,
+        42
+      ]
+    },
+    {
+      "name": "demon-swordsman-dead-grounded",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 4,
+      "cols": 6,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        165,
+        69,
+        27
+      ]
+    },
+    {
+      "name": "demon-swordsman-fall-recovery",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 5,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        144,
+        57,
+        48
+      ]
+    },
+    {
+      "name": "demon-swordsman-falling",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 6,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        75,
+        54,
+        54
+      ]
+    },
+    {
+      "name": "demon-swordsman-idle",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 7,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        132,
+        57,
+        60
+      ]
+    },
+    {
+      "name": "demon-swordsman-jumping",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 8,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        69,
+        54,
+        60
+      ]
+    },
+    {
+      "name": "demon-swordsman-knockback",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 9,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        141,
+        60,
+        51
+      ]
+    },
+    {
+      "name": "demon-swordsman-moving",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 10,
+      "cols": 8,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        126,
+        54,
+        66
+      ]
+    },
+    {
+      "name": "demon-swordsman-prepare-jump",
+      "sheet": "demon-swordsman-192x192.png",
+      "row": 11,
+      "cols": 3,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        135,
+        57,
+        57
+      ]
+    },
+    {
+      "name": "demon-swordsman-attack-landed",
+      "sheet": "demon-swordsman-240x192.png",
+      "row": 0,
+      "cols": 6,
+      "cell": [
+        240,
+        192
+      ],
+      "content_bounds": [
+        72,
+        129,
+        120,
+        63
+      ]
+    },
+    {
+      "name": "demon-swordsman-attack-prepare-leap",
+      "sheet": "demon-swordsman-240x192.png",
+      "row": 1,
+      "cols": 3,
+      "cell": [
+        240,
+        192
+      ],
+      "content_bounds": [
+        78,
+        135,
+        60,
+        57
+      ]
+    }
+  ]
+}

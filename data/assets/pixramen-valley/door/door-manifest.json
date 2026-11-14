@@ -1,0 +1,63 @@
+{
+  "prefix": "door",
+  "sheets": {
+    "door-96x48.png": {
+      "cell": [
+        96,
+        48
+      ],
+      "rows": 3,
+      "cols": 4
+    }
+  },
+  "animations": [
+    {
+      "name": "door-blue",
+      "sheet": "door-96x48.png",
+      "row": 0,
+      "cols": 4,
+      "cell": [
+        96,
+        48
+      ],
+      "content_bounds": [
+        15,
+        0,
+        42,
+        48
+      ]
+    },
+    {
+      "name": "door-green",
+      "sheet": "door-96x48.png",
+      "row": 1,
+      "cols": 4,
+      "cell": [
+        96,
+        48
+      ],
+      "content_bounds": [
+        15,
+        0,
+        42,
+        48
+      ]
+    },
+    {
+      "name": "door-red",
+      "sheet": "door-96x48.png",
+      "row": 2,
+      "cols": 4,
+      "cell": [
+        96,
+        48
+      ],
+      "content_bounds": [
+        15,
+        0,
+        42,
+        48
+      ]
+    }
+  ]
+}

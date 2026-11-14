@@ -23,10 +23,12 @@ class Character(WorldSprite):
 
         self.direction = Vector2(0, 0)
 
-        animation_set = SharedData().state_animations[animation_stem]
-        animations = animation_set.library.animations
-        self.fps = {k: animations[k].fps for k in animations}
-        self.animation_states = {k: AnimationPlayer(animation_set, k) for k in animations}
+        self.fps = {}
+        self.animation_states: dict[str, AnimationPlayer] = {}
+        self.shape_bounds = {}
+        base_animation_set = SharedData().state_animations[animation_stem]
+        self.base_tile_size = base_animation_set.library.tile_size
+        self.add_animation(animation_stem)
 
         collision_data = SharedData().character_collisions[collision_stem]
         self.collision_mask = collision_data.collision_mask
@@ -41,6 +43,13 @@ class Character(WorldSprite):
         self.flipped = False
 
         self.direction = Vector2(1, 0)
+
+    def add_animation(self, animation_stem: str):
+        animation_set = SharedData().state_animations[animation_stem]
+        animations = animation_set.library.animations
+        self.fps |= {k: animations[k].fps for k in animations}
+        self.animation_states |= {k: AnimationPlayer(animation_set, k) for k in animations}
+        self.shape_bounds |= {k: animation_set.get_content_bounds(k) for k in animations}
 
     def get_state(self) -> str:
         raise NotImplementedError()
@@ -58,13 +67,10 @@ class Character(WorldSprite):
             self.current_state = next_state
 
     def flip_character_shape(self, flip_h: bool):
-        frame = self.get_frame()
-        if frame is None:
-            return
         if flip_h:
             self.collision_shape = flip_character_shape(
                 self.original_collision_shape,
-                frame.size,
+                self.base_tile_size,
                 flip_h=flip_h,
             )
         else:

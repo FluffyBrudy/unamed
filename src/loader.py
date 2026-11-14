@@ -92,14 +92,14 @@ class LevelData:
     def preload(self, map_suffix: str):
         primary_surface = pygame.display.get_surface()
         if primary_surface is None:
-            raise ValueError()
+            raise ValueError("Surface Uninitialized")
 
         data_path = ROOT / "data"
         mapdata = load_map(data_path / "maps" / f"{map_suffix}")
-        collision_tileset = load_tileset_collision(data_path / "collision/spacetileset.collision.json")
+        collision_tileset = load_tileset_collision(data_path / "collision/tileset.collision.json")
 
         if collision_tileset is None:
-            raise ValueError()
+            raise ValueError("meow")
 
         self.physics_world = PhysicsWorld.from_map(mapdata, collision_tileset)
         self.collision_runner = CollisionRunner.from_world(self.physics_world)

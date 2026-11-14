@@ -1,0 +1,63 @@
+{
+  "prefix": "rune-tablet",
+  "sheets": {
+    "rune-tablet-33x42.png": {
+      "cell": [
+        33,
+        42
+      ],
+      "rows": 3,
+      "cols": 1
+    }
+  },
+  "animations": [
+    {
+      "name": "blue-rune-tablet",
+      "sheet": "rune-tablet-33x42.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        33,
+        42
+      ],
+      "content_bounds": [
+        0,
+        0,
+        33,
+        42
+      ]
+    },
+    {
+      "name": "green-rune-tablet",
+      "sheet": "rune-tablet-33x42.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        33,
+        42
+      ],
+      "content_bounds": [
+        0,
+        0,
+        33,
+        42
+      ]
+    },
+    {
+      "name": "red-rune-tablet",
+      "sheet": "rune-tablet-33x42.png",
+      "row": 2,
+      "cols": 1,
+      "cell": [
+        33,
+        42
+      ],
+      "content_bounds": [
+        0,
+        0,
+        33,
+        42
+      ]
+    }
+  ]
+}

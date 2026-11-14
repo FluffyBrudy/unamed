@@ -1,0 +1,231 @@
+{
+  "prefix": "demon-gunner",
+  "sheets": {
+    "demon-gunner-96x96.png": {
+      "cell": [
+        96,
+        96
+      ],
+      "rows": 1,
+      "cols": 1
+    },
+    "demon-gunner-144x144.png": {
+      "cell": [
+        144,
+        144
+      ],
+      "rows": 2,
+      "cols": 5
+    },
+    "demon-gunner-192x192.png": {
+      "cell": [
+        192,
+        192
+      ],
+      "rows": 8,
+      "cols": 5
+    },
+    "demon-gunner-240x219.png": {
+      "cell": [
+        240,
+        219
+      ],
+      "rows": 1,
+      "cols": 10
+    }
+  },
+  "animations": [
+    {
+      "name": "demon-gunner-weapon",
+      "sheet": "demon-gunner-96x96.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        96,
+        96
+      ],
+      "content_bounds": [
+        30,
+        42,
+        33,
+        12
+      ]
+    },
+    {
+      "name": "demon-gunner-projectile",
+      "sheet": "demon-gunner-144x144.png",
+      "row": 0,
+      "cols": 3,
+      "cell": [
+        144,
+        144
+      ],
+      "content_bounds": [
+        54,
+        66,
+        45,
+        15
+      ]
+    },
+    {
+      "name": "demon-gunner-projectile-explosion",
+      "sheet": "demon-gunner-144x144.png",
+      "row": 1,
+      "cols": 5,
+      "cell": [
+        144,
+        144
+      ],
+      "content_bounds": [
+        12,
+        30,
+        117,
+        81
+      ]
+    },
+    {
+      "name": "demon-gunner-dead",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 0,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        57,
+        171,
+        57,
+        21
+      ]
+    },
+    {
+      "name": "demon-gunner-dead-falling",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        63,
+        105,
+        57,
+        30
+      ]
+    },
+    {
+      "name": "demon-gunner-fall-recovery",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 2,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        144,
+        60,
+        48
+      ]
+    },
+    {
+      "name": "demon-gunner-falling",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 3,
+      "cols": 3,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        72,
+        48,
+        66
+      ]
+    },
+    {
+      "name": "demon-gunner-idle",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 4,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        141,
+        60,
+        51
+      ]
+    },
+    {
+      "name": "demon-gunner-jump",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 5,
+      "cols": 3,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        66,
+        48,
+        69
+      ]
+    },
+    {
+      "name": "demon-gunner-prep-jump",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 6,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        144,
+        60,
+        48
+      ]
+    },
+    {
+      "name": "demon-gunner-run",
+      "sheet": "demon-gunner-192x192.png",
+      "row": 7,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        72,
+        141,
+        60,
+        51
+      ]
+    },
+    {
+      "name": "demon-gunner-shoot",
+      "sheet": "demon-gunner-240x219.png",
+      "row": 0,
+      "cols": 10,
+      "cell": [
+        240,
+        219
+      ],
+      "content_bounds": [
+        72,
+        126,
+        120,
+        87
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "dark_knight",
+  "shape": {
+    "type": "rectangle",
+    "width": 49.914999441582765,
+    "height": 61.1861283477466,
+    "offset": [
+      79.18259523036703,
+      64.54666556665387
+    ]
+  },
+  "properties": {
+    "collision_layer": 1,
+    "collision_mask": 65535
+  },
+  "image_path": "assets/pixramen-valley/dark-knight/dark-knight-192x192.png"
+}

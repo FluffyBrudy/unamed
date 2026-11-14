@@ -1,0 +1,151 @@
+{
+  "prefix": "demon-bat",
+  "sheets": {
+    "demon-bat-192x192.png": {
+      "cell": [
+        192,
+        192
+      ],
+      "rows": 5,
+      "cols": 14
+    },
+    "demon-bat-240x240.png": {
+      "cell": [
+        240,
+        240
+      ],
+      "rows": 3,
+      "cols": 5
+    }
+  },
+  "animations": [
+    {
+      "name": "demon-bat-bite",
+      "sheet": "demon-bat-192x192.png",
+      "row": 0,
+      "cols": 14,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        33,
+        78,
+        114,
+        81
+      ]
+    },
+    {
+      "name": "demon-bat-death",
+      "sheet": "demon-bat-192x192.png",
+      "row": 1,
+      "cols": 6,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        6,
+        60,
+        132,
+        66
+      ]
+    },
+    {
+      "name": "demon-bat-fire-projectile",
+      "sheet": "demon-bat-192x192.png",
+      "row": 2,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        33,
+        78,
+        114,
+        69
+      ]
+    },
+    {
+      "name": "demon-bat-flying",
+      "sheet": "demon-bat-192x192.png",
+      "row": 3,
+      "cols": 4,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        45,
+        87,
+        93,
+        60
+      ]
+    },
+    {
+      "name": "demon-bat-knockback",
+      "sheet": "demon-bat-192x192.png",
+      "row": 4,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        81,
+        105,
+        48,
+        42
+      ]
+    },
+    {
+      "name": "demon-bat-prjectile-charging",
+      "sheet": "demon-bat-240x240.png",
+      "row": 0,
+      "cols": 5,
+      "cell": [
+        240,
+        240
+      ],
+      "content_bounds": [
+        93,
+        99,
+        54,
+        42
+      ]
+    },
+    {
+      "name": "demon-bat-projectile",
+      "sheet": "demon-bat-240x240.png",
+      "row": 1,
+      "cols": 3,
+      "cell": [
+        240,
+        240
+      ],
+      "content_bounds": [
+        81,
+        99,
+        78,
+        39
+      ]
+    },
+    {
+      "name": "demon-bat-projectile-explosion",
+      "sheet": "demon-bat-240x240.png",
+      "row": 2,
+      "cols": 5,
+      "cell": [
+        240,
+        240
+      ],
+      "content_bounds": [
+        24,
+        51,
+        198,
+        129
+      ]
+    }
+  ]
+}

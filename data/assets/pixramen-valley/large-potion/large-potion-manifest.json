@@ -1,0 +1,63 @@
+{
+  "prefix": "large-potion",
+  "sheets": {
+    "large-potion-27x24.png": {
+      "cell": [
+        27,
+        24
+      ],
+      "rows": 3,
+      "cols": 1
+    }
+  },
+  "animations": [
+    {
+      "name": "blue-potion-large",
+      "sheet": "large-potion-27x24.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        27,
+        24
+      ],
+      "content_bounds": [
+        0,
+        0,
+        27,
+        24
+      ]
+    },
+    {
+      "name": "green-potion-large",
+      "sheet": "large-potion-27x24.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        27,
+        24
+      ],
+      "content_bounds": [
+        0,
+        0,
+        27,
+        24
+      ]
+    },
+    {
+      "name": "red-potion-large",
+      "sheet": "large-potion-27x24.png",
+      "row": 2,
+      "cols": 1,
+      "cell": [
+        27,
+        24
+      ],
+      "content_bounds": [
+        0,
+        0,
+        27,
+        24
+      ]
+    }
+  ]
+}

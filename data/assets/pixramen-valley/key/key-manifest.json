@@ -1,0 +1,63 @@
+{
+  "prefix": "key",
+  "sheets": {
+    "key-39x24.png": {
+      "cell": [
+        39,
+        24
+      ],
+      "rows": 3,
+      "cols": 1
+    }
+  },
+  "animations": [
+    {
+      "name": "key-blue",
+      "sheet": "key-39x24.png",
+      "row": 0,
+      "cols": 1,
+      "cell": [
+        39,
+        24
+      ],
+      "content_bounds": [
+        0,
+        0,
+        39,
+        24
+      ]
+    },
+    {
+      "name": "key-green",
+      "sheet": "key-39x24.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        39,
+        24
+      ],
+      "content_bounds": [
+        0,
+        0,
+        39,
+        24
+      ]
+    },
+    {
+      "name": "key-red",
+      "sheet": "key-39x24.png",
+      "row": 2,
+      "cols": 1,
+      "cell": [
+        39,
+        24
+      ],
+      "content_bounds": [
+        0,
+        0,
+        39,
+        24
+      ]
+    }
+  ]
+}

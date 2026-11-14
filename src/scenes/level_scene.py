@@ -11,12 +11,12 @@ class LevelScene(Scene):
         return super().enter(**kwargs)
 
     def load(self, **kwargs):
-        LevelData().preload(f"{kwargs.get('level', '0')}.json")
+        LevelData().preload(f"{kwargs.get('level', 'untitled')}.json")
         SharedData().preload(render_scale=LevelData().level_render_scale)
 
         self.tile_layer_renderer = LevelData().tile_layer_renderer
 
-        self.player = Soilder(*LevelData().entities["player"][0])
+        self.player = Soilder(*LevelData().entities["dark_knight"][0])
         self.camera = LevelData().camera
         self.camera.follow(self.player)
 

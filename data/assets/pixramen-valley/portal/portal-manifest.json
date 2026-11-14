@@ -1,0 +1,63 @@
+{
+  "prefix": "portal",
+  "sheets": {
+    "portal-171x114.png": {
+      "cell": [
+        171,
+        114
+      ],
+      "rows": 3,
+      "cols": 6
+    }
+  },
+  "animations": [
+    {
+      "name": "blue-portal",
+      "sheet": "portal-171x114.png",
+      "row": 0,
+      "cols": 6,
+      "cell": [
+        171,
+        114
+      ],
+      "content_bounds": [
+        0,
+        0,
+        171,
+        114
+      ]
+    },
+    {
+      "name": "green-portal",
+      "sheet": "portal-171x114.png",
+      "row": 1,
+      "cols": 6,
+      "cell": [
+        171,
+        114
+      ],
+      "content_bounds": [
+        0,
+        0,
+        171,
+        114
+      ]
+    },
+    {
+      "name": "red-portal",
+      "sheet": "portal-171x114.png",
+      "row": 2,
+      "cols": 6,
+      "cell": [
+        171,
+        114
+      ],
+      "content_bounds": [
+        0,
+        0,
+        171,
+        114
+      ]
+    }
+  ]
+}

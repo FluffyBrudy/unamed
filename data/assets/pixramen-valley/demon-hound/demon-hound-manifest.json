@@ -1,0 +1,175 @@
+{
+  "prefix": "demon-hound",
+  "sheets": {
+    "demon-hound-192x192.png": {
+      "cell": [
+        192,
+        192
+      ],
+      "rows": 10,
+      "cols": 9
+    }
+  },
+  "animations": [
+    {
+      "name": "demon-hound-bite",
+      "sheet": "demon-hound-192x192.png",
+      "row": 0,
+      "cols": 9,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        24,
+        126,
+        147,
+        66
+      ]
+    },
+    {
+      "name": "demon-hound-death-falling",
+      "sheet": "demon-hound-192x192.png",
+      "row": 1,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        78,
+        69,
+        36,
+        57
+      ]
+    },
+    {
+      "name": "demon-hound-death-landed",
+      "sheet": "demon-hound-192x192.png",
+      "row": 2,
+      "cols": 5,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        57,
+        156,
+        63,
+        36
+      ]
+    },
+    {
+      "name": "demon-hound-fall-recovery",
+      "sheet": "demon-hound-192x192.png",
+      "row": 3,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        147,
+        60,
+        45
+      ]
+    },
+    {
+      "name": "demon-hound-falling",
+      "sheet": "demon-hound-192x192.png",
+      "row": 4,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        69,
+        48,
+        60
+      ]
+    },
+    {
+      "name": "demon-hound-idle",
+      "sheet": "demon-hound-192x192.png",
+      "row": 5,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        144,
+        54,
+        48
+      ]
+    },
+    {
+      "name": "demon-hound-jumping",
+      "sheet": "demon-hound-192x192.png",
+      "row": 6,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        75,
+        69,
+        39,
+        63
+      ]
+    },
+    {
+      "name": "demon-hound-knockback",
+      "sheet": "demon-hound-192x192.png",
+      "row": 7,
+      "cols": 1,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        66,
+        153,
+        51,
+        39
+      ]
+    },
+    {
+      "name": "demon-hound-prepare-jump",
+      "sheet": "demon-hound-192x192.png",
+      "row": 8,
+      "cols": 2,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        69,
+        147,
+        60,
+        45
+      ]
+    },
+    {
+      "name": "demon-hound-run",
+      "sheet": "demon-hound-192x192.png",
+      "row": 9,
+      "cols": 6,
+      "cell": [
+        192,
+        192
+      ],
+      "content_bounds": [
+        60,
+        138,
+        69,
+        54
+      ]
+    }
+  ]
+}
