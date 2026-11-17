@@ -1,9 +1,9 @@
 from collections.abc import Callable
 
 from pygame.surface import Surface
+from tilemap_parser import CharacterHitboxes, HitboxProxy
 from tilemap_parser.runtime.collision.hit import CollisionHit
 from tilemap_parser.runtime.collision.manager import ObjectCollisionManager
-from tilemap_parser.runtime.protocols import ICollidable
 
 from src.utils import WorldObject
 
@@ -21,12 +21,23 @@ class ObjectManager:
             raise ValueError("Handlers already exists")
         self._handlers[(a_id, b_id)] = handler
 
-    def add_object(self, obj: ICollidable):
-        if isinstance(obj, WorldObject):
-            self.object_container.append(obj)
-            self.collision_manager.add_object(obj)
-        else:
-            print("object doesnt implements updaate and render methods")
+    def add_object(
+        self, obj: WorldObject, hitboxes: CharacterHitboxes | None = None
+    ) -> None:
+        """Register a game object with the manager.
+
+        Colliding objects must carry the ICollidable fields themselves
+        (collision_shapes / collision_shape, collision_layer, collision_mask);
+        the manager works with WorldObject. When `hitboxes` is given, a
+        HitboxProxy is registered for the object and is removed automatically
+        when the object is removed (the collision manager cascades proxies
+        with their owner).
+        """
+        if hitboxes is not None:
+            hitbox_proxy = HitboxProxy(hitboxes, obj)
+            self.collision_manager.add_object(hitbox_proxy, allow_shapeless=True)
+        self.object_container.append(obj)
+        self.collision_manager.add_object(obj)
 
     def resolve_collision(self, collision_hit: CollisionHit):
         obj_a: WorldObject = collision_hit.object_a  # type: ignore
