@@ -22,20 +22,11 @@ class ObjectManager:
         self._handlers[(a_id, b_id)] = handler
 
     def add_object(
-        self, obj: WorldObject, hitboxes: CharacterHitboxes | None = None
+        self,
+        obj: WorldObject,
+        hitboxes: CharacterHitboxes | None = None,
     ) -> HitboxState | None:
-        """Register a game object with the manager.
 
-        Colliding objects must carry the ICollidable fields themselves
-        (collision_shapes / collision_shape, collision_layer, collision_mask);
-        the manager works with WorldObject. When `hitboxes` is given, a
-        HitboxState is attached fixture-style to the object: broadphase
-        enumerates it beside the body, removing the object drops it, and
-        an idle window contributes nothing. Sync the returned state each
-        frame (`state.sync(clip, frame, flip_h=...)`); hits it produces
-        are event-only (hit.via_hitbox, hit.hitbox_a/hitbox_b carry the
-        state; CollisionHit.resolve() refuses them).
-        """
         state: HitboxState | None = None
         if hitboxes is not None:
             state = HitboxState(hitboxes, obj)

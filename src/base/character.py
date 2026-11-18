@@ -1,15 +1,11 @@
 from pygame import Vector2
 from pygame.rect import Rect
-from tilemap_parser import AnimationPlayer, flip_character_shape
+from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape
 
 from src.loader import LevelData, SharedData
 
 
-class Character:
-    """Satisfies tilemap_parser's ICollidableSprite structurally; the
-    protocol is not inherited explicitly (inherited read-only protocol
-    members would shadow the plain attributes assigned below)."""
-
+class Character(ICollidableSprite):
     def __init__(
         self,
         x: float,
@@ -54,9 +50,7 @@ class Character:
         self.fps |= {k: animations[k].fps for k in animations}
         self.animation_states |= {k: AnimationPlayer(animation_set, k) for k in animations}
         self.shape_bounds |= {
-            k: bounds
-            for k in animations
-            if (bounds := animation_set.get_content_bounds(k)) is not None
+            k: bounds for k in animations if (bounds := animation_set.get_content_bounds(k)) is not None
         }
 
     def get_state(self) -> str:
