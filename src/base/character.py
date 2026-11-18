@@ -1,11 +1,15 @@
 from pygame import Vector2
+from pygame.rect import Rect
 from tilemap_parser import AnimationPlayer, flip_character_shape
 
 from src.loader import LevelData, SharedData
-from src.utils import WorldSprite
 
 
-class Character(WorldSprite):
+class Character:
+    """Satisfies tilemap_parser's ICollidableSprite structurally; the
+    protocol is not inherited explicitly (inherited read-only protocol
+    members would shadow the plain attributes assigned below)."""
+
     def __init__(
         self,
         x: float,
@@ -25,7 +29,7 @@ class Character(WorldSprite):
 
         self.fps = {}
         self.animation_states: dict[str, AnimationPlayer] = {}
-        self.shape_bounds = {}
+        self.shape_bounds: dict[str, Rect] = {}
         base_animation_set = SharedData().state_animations[animation_stem]
         self.base_tile_size = base_animation_set.library.tile_size
         self.add_animation(animation_stem)
@@ -49,7 +53,11 @@ class Character(WorldSprite):
         animations = animation_set.library.animations
         self.fps |= {k: animations[k].fps for k in animations}
         self.animation_states |= {k: AnimationPlayer(animation_set, k) for k in animations}
-        self.shape_bounds |= {k: animation_set.get_content_bounds(k) for k in animations}
+        self.shape_bounds |= {
+            k: bounds
+            for k in animations
+            if (bounds := animation_set.get_content_bounds(k)) is not None
+        }
 
     def get_state(self) -> str:
         raise NotImplementedError()

@@ -1,7 +1,7 @@
 from collections.abc import Callable
 
 from pygame.surface import Surface
-from tilemap_parser import CharacterHitboxes, HitboxProxy
+from tilemap_parser import CharacterHitboxes, HitboxState
 from tilemap_parser.runtime.collision.hit import CollisionHit
 from tilemap_parser.runtime.collision.manager import ObjectCollisionManager
 
@@ -23,21 +23,26 @@ class ObjectManager:
 
     def add_object(
         self, obj: WorldObject, hitboxes: CharacterHitboxes | None = None
-    ) -> None:
+    ) -> HitboxState | None:
         """Register a game object with the manager.
 
         Colliding objects must carry the ICollidable fields themselves
         (collision_shapes / collision_shape, collision_layer, collision_mask);
         the manager works with WorldObject. When `hitboxes` is given, a
-        HitboxProxy is registered for the object and is removed automatically
-        when the object is removed (the collision manager cascades proxies
-        with their owner).
+        HitboxState is attached fixture-style to the object: broadphase
+        enumerates it beside the body, removing the object drops it, and
+        an idle window contributes nothing. Sync the returned state each
+        frame (`state.sync(clip, frame, flip_h=...)`); hits it produces
+        are event-only (hit.via_hitbox, hit.hitbox_a/hitbox_b carry the
+        state; CollisionHit.resolve() refuses them).
         """
+        state: HitboxState | None = None
         if hitboxes is not None:
-            hitbox_proxy = HitboxProxy(hitboxes, obj)
-            self.collision_manager.add_object(hitbox_proxy, allow_shapeless=True)
+            state = HitboxState(hitboxes, obj)
+            self.collision_manager.attach_hitboxes(obj, state)
         self.object_container.append(obj)
         self.collision_manager.add_object(obj)
+        return state
 
     def resolve_collision(self, collision_hit: CollisionHit):
         obj_a: WorldObject = collision_hit.object_a  # type: ignore
