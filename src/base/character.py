@@ -1,6 +1,6 @@
 from pygame import Vector2
 from pygame.rect import Rect
-from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape
+from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape, get_shape_aabb
 
 from src.loader import LevelData, SharedData
 
@@ -20,8 +20,6 @@ class Character(ICollidableSprite):
         self.vx = 0
         self.vy = 0
         self.on_ground = False
-
-        self.direction = Vector2(0, 0)
 
         self.fps = {}
         self.animation_states: dict[str, AnimationPlayer] = {}

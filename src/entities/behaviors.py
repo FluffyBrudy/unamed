@@ -1,4 +1,7 @@
 from enum import Enum, auto
+from typing import Literal
+
+import pygame
 
 from src.base.character import Character
 
@@ -36,3 +39,28 @@ class KillableBehavior:
     def update(self, dt: float):
         if self.cd:
             self.cd = max(0, self.cd - dt)
+
+
+class ChaserBehavior:
+    def __init__(self, owner: Character, target: Character, visible_dist: float, attack_dist: float) -> None:
+        self.state: Literal["idle", "chase", "attack", "wait"] = "idle"
+        self.owner = owner
+        self.target = target
+        self.visible_dist = visible_dist**2
+        self.attack_dist = attack_dist**2
+        self.vector = pygame.Vector2(0, 0)
+
+    def update(self, dt: float):
+        dx = self.target.x - self.owner.x
+        dy = self.target.y - self.owner.y
+        self.vector.update(dx, dy)
+        dist = self.vector.length_squared()
+        if dist > self.visible_dist:
+            self.state = "idle"
+        elif self.target.can_hurt():
+            if dist <= self.attack_dist:
+                self.state = "attack"
+            else:
+                self.state = "chase"
+        else:
+            self.state = "wait"

@@ -2,6 +2,7 @@ from random import random
 
 import pygame
 from pygame import Event
+from pygame.rect import Rect
 from tilemap_parser import get_shape_aabb
 
 from src.base.character import Character
@@ -12,7 +13,7 @@ HEAD_TURN_LEFT = -1
 HEAD_TURN_RIGHT = 1
 
 
-class Soilder(Character):
+class Knight(Character):
     def __init__(self, x: float, y: float):
         super().__init__(x, y, "dark_knight-192x192.anim", "dark_knight.collision", "idle", SOILDER_EID)
 
@@ -26,6 +27,8 @@ class Soilder(Character):
         self.add_animation("dark-knight-336x105.anim")
         self.is_attacking = False
 
+        self.rectz = pygame.Rect(0, 0, 0, 0)
+
     def get_state(self) -> str:
         if self.vy > 0:
             return "fall"
@@ -36,6 +39,12 @@ class Soilder(Character):
         elif abs(self.vx) > 0:
             return "run"
         return "idle"
+
+    def can_hurt(self) -> bool:
+        return True
+
+    def can_kill(self) -> bool:
+        return False
 
     def handle_event(self, event: Event):
         if event.type == pygame.KEYDOWN:

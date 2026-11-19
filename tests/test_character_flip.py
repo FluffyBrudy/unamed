@@ -2,8 +2,8 @@ import pygame
 import pytest
 from tilemap_parser import RectangleShape
 
+from src.entities.knight import Soilder
 from src.loader import LevelData, SharedData
-from src.entities.soilder import Soilder
 
 
 @pytest.fixture(scope="module")

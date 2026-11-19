@@ -1,3 +1,4 @@
+import typing
 from collections import defaultdict
 from pathlib import Path
 
@@ -7,14 +8,17 @@ from pygame.typing import Point
 from tilemap_parser import (
     Camera,
     CharacterCollision,
+    CharacterHitboxes,
     CollisionRunner,
     PhysicsWorld,
     SpriteAnimationSet,
     TileLayerRenderer,
     TilemapData,
+    get_cached_character_hitboxes,
     load_map,
 )
 from tilemap_parser.parser import load_tileset_collision
+from tilemap_parser.runtime import clear_collision_cache
 from tilemap_parser.runtime.collision_cache import get_cached_character_collision
 
 from src.settings import ROOT
@@ -45,21 +49,31 @@ class SharedData:
         else:
             # room for sounds
             self.loaded_once = True
+            clear_collision_cache()
         self.render_scale = render_scale
         self.state_animations = self.load_state_animations()
-        self.character_collisions = self.load_character_collisions()
+
+        collisions = self.load_character_collisions()
+        self.character_collisions: dict[str, CharacterCollision] = collisions["character_collisions"]
+        self.character_hitboxes = collisions["hitbox_collisions"]
 
     def load_character_collisions(self):
         char_collision_path = ROOT / "data/character_collision"
         character_collisions: dict[str, CharacterCollision] = {}
+        hitbox_collisions: dict[str, CharacterHitboxes] = {}
         for collision_path in char_collision_path.iterdir():
-            collision = get_cached_character_collision(
-                collision_path,
-                render_scale=self.render_scale,
-            )
-            assert collision is not None
-            character_collisions[collision_path.stem] = collision
-        return character_collisions
+            if collision_path.suffixes[0] == ".collision":
+                collision = get_cached_character_collision(
+                    collision_path,
+                    render_scale=self.render_scale,
+                )
+                assert collision is not None
+                character_collisions[collision_path.stem] = collision
+            elif collision_path.suffixes[0] == ".collision":
+                collision = get_cached_character_hitboxes(collision_path, render_scale=self.render_scale)
+                assert collision is not None
+                hitbox_collisions[collision_path.stem] = collision
+        return {"character_collisions": character_collisions, "hitbox_collisions": hitbox_collisions}
 
     def load_state_animations(self):
         state_anim_path = ROOT / "data/animations"

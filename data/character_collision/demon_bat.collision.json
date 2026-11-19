@@ -1,0 +1,16 @@
+{
+  "name": "demon_bat",
+  "shape": {
+    "type": "circle",
+    "radius": 36.84270671209755,
+    "offset": [
+      83.25887368301917,
+      97.75334904621488
+    ]
+  },
+  "properties": {
+    "collision_layer": 1,
+    "collision_mask": 65535
+  },
+  "image_path": "assets/pixramen-valley/demon-bat/demon-bat-192x192.png"
+}

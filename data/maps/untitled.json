@@ -3,7 +3,7 @@
     "tile_size": "64;64",
     "map_size": "30;8",
     "zoom_level": 1.1999999999999995,
-    "scroll": "569.2335858585857;-190.936206180013",
+    "scroll": "369.2335858585857;-190.936206180013",
     "offset": "0;0",
     "render_scale": 1.0,
     "version": "1.1"
@@ -23,6 +23,15 @@
         "firstgid": 108,
         "properties": {
           "name": "dark_knight"
+        }
+      },
+      {
+        "path": "../assets/pixramen-valley/demon-bat/demon-bat_0.png",
+        "type": "object",
+        "tile_count": 4,
+        "firstgid": 108,
+        "properties": {
+          "name": "demon_bat"
         }
       }
     ]
@@ -5995,9 +6004,20 @@
             "tileset_type": "object",
             "variant": 0,
             "properties": {}
+          },
+          "3": {
+            "area": {
+              "x": 654,
+              "y": 34,
+              "w": 189,
+              "h": 191
+            },
+            "ttype": 2,
+            "tileset_type": "object",
+            "variant": 0
           }
         },
-        "next_object_id": 3,
+        "next_object_id": 4,
         "properties": {}
       }
     ]
