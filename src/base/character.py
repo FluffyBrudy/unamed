@@ -1,4 +1,5 @@
-from pygame import Vector2
+import pygame
+from pygame import Surface, Vector2
 from pygame.rect import Rect
 from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape, get_shape_aabb
 
@@ -60,6 +61,12 @@ class Character(ICollidableSprite):
     def can_hurt(self) -> bool:
         raise NotImplementedError()
 
+    def has_anim_finished(self):
+        return self.animation_states[self.current_state].finished
+
+    def on_collision(self, **kwargs):
+        pass
+
     def manage_state(self):
         next_state = self.get_state()
         if self.current_state != next_state:
@@ -86,3 +93,15 @@ class Character(ICollidableSprite):
         if current_frame is None:
             return
         return current_frame
+
+    def get_blit_pos(self, frame: Surface, offset: tuple[float, float]):
+        shape_bound = self.shape_bounds.get(self.current_state)
+        if shape_bound is not None:
+            frame = frame.subsurface(shape_bound)
+        l, _, r, b = get_shape_aabb(self.x, self.y, self.collision_shape)
+        feet_x = (l + r) / 2
+        feet_y = b
+        w, h = frame.get_size()
+        blit_x = round(feet_x - w / 2 - offset[0])
+        blit_y = round(feet_y - h - offset[1])
+        return frame, blit_x, blit_y

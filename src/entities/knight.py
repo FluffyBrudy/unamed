@@ -6,6 +6,7 @@ from pygame.rect import Rect
 from tilemap_parser import get_shape_aabb
 
 from src.base.character import Character
+from src.entities.behaviors import KillableBehavior
 from src.settings import SOILDER_EID
 
 HEAD_TURN_NONE = 0
@@ -25,11 +26,13 @@ class Knight(Character):
         # fmt: on
         self.keys_pressed = dict.fromkeys(registered_keys, False)
         self.add_animation("dark-knight-336x105.anim")
+        self.add_animation("dark-knight-168x207.anim")
         self.is_attacking = False
-
-        self.rectz = pygame.Rect(0, 0, 0, 0)
+        self.killable_behavior = KillableBehavior(self, 0.25, 5, "death")
 
     def get_state(self) -> str:
+        if self.killable_behavior.reach_hit_count():
+            return "death"
         if self.vy > 0:
             return "fall"
         elif self.vy < 0:
@@ -41,10 +44,10 @@ class Knight(Character):
         return "idle"
 
     def can_hurt(self) -> bool:
-        return True
+        return self.killable_behavior.can_hurt()
 
     def can_kill(self) -> bool:
-        return False
+        return self.killable_behavior.can_kill()
 
     def handle_event(self, event: Event):
         if event.type == pygame.KEYDOWN:
@@ -81,19 +84,7 @@ class Knight(Character):
         frame = self.get_frame()
         if not frame:
             return
-
         if self.flipped:
             frame = pygame.transform.flip(frame, True, False)
-
-        shape_bound = self.shape_bounds.get(self.current_state)
-        if shape_bound is not None:
-            frame = frame.subsurface(shape_bound)
-
-        l, t, r, b = get_shape_aabb(self.x, self.y, self.collision_shape)
-        feet_x = (l + r) / 2
-        feet_y = b
-
-        w, h = frame.get_size()
-        blit_x = round(feet_x - w / 2 - offset[0])
-        blit_y = round(feet_y - h - offset[1])
+        frame, blit_x, blit_y = self.get_blit_pos(frame, offset)
         surface.blit(frame, (blit_x, blit_y))
