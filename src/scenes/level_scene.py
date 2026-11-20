@@ -21,6 +21,7 @@ class LevelScene(Scene):
         self.player = Knight(*LevelData().entities["dark_knight"][0])
         self.camera = LevelData().camera
         self.camera.follow(self.player)
+        SharedData().debug.set_camera(self.camera)
 
         self.object_manager = ObjectManager()
         self.object_manager.add_object(self.player)

@@ -25,6 +25,7 @@ class Game:
         self.clock = pygame.time.Clock()
 
         SharedData().preload()
+        self.debug = SharedData().debug
         self.scene_manager = SceneManager()
         self.scene_manager.change_scene(LevelScene(), vw=self.WIDTH, vh=self.HEIGHT)
 
@@ -33,11 +34,13 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
+                self.debug.handle_event(event)
             return
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
             self.scene_manager.current_scene.handle_event(event)
+            self.debug.handle_event(event)
 
     def update(self, dt: float) -> None:
         self.scene_manager.update(dt)
@@ -45,6 +48,7 @@ class Game:
     def render(self) -> None:
         self.screen.fill(self.BG_COLOR)
         self.scene_manager.render(self.screen)
+        self.debug.render(self.screen)
         pygame.display.flip()
 
     def run(self) -> None:

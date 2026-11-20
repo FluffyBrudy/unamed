@@ -1,10 +1,10 @@
 import typing
 from collections import defaultdict
-from pathlib import Path
 
 import pygame
 from pygame import Surface
 from pygame.typing import Point
+from pygkit.debug import Debug
 from tilemap_parser import (
     Camera,
     CharacterCollision,
@@ -41,6 +41,7 @@ class SharedData:
     def __init__(self) -> None:
         self.render_scale = 1.0
         self.loaded_once = False
+        self.debug = Debug()
 
     def preload(self, render_scale: float = 1.0):
         if self.loaded_once:
