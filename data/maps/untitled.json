@@ -3,7 +3,7 @@
     "tile_size": "64;64",
     "map_size": "30;8",
     "zoom_level": 1.1999999999999995,
-    "scroll": "369.2335858585857;-190.936206180013",
+    "scroll": "369.2335858585857;-110.93620618001299",
     "offset": "0;0",
     "render_scale": 1.0,
     "version": "1.1"
@@ -2405,7 +2405,7 @@
       {
         "name": "bg",
         "type": "tile",
-        "visible": true,
+        "visible": false,
         "locked": false,
         "opacity": 1.0,
         "z_index": 0,
@@ -6014,7 +6014,8 @@
             },
             "ttype": 2,
             "tileset_type": "object",
-            "variant": 0
+            "variant": 0,
+            "properties": {}
           }
         },
         "next_object_id": 4,

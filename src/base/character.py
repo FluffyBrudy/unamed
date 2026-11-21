@@ -1,9 +1,16 @@
+from typing import Any, Literal, TypedDict
+
 import pygame
 from pygame import Surface, Vector2
 from pygame.rect import Rect
 from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape, get_shape_aabb
 
 from src.loader import LevelData, SharedData
+
+
+class AnimProps(TypedDict):
+    shape_bounds: dict[str, Rect]
+    metadata: dict[str, Any]
 
 
 class Character(ICollidableSprite):
@@ -24,7 +31,7 @@ class Character(ICollidableSprite):
 
         self.fps = {}
         self.animation_states: dict[str, AnimationPlayer] = {}
-        self.shape_bounds: dict[str, Rect] = {}
+        self.anim_props: AnimProps = {"shape_bounds": {}, "metadata": {}}
         base_animation_set = SharedData().state_animations[animation_stem]
         self.base_tile_size = base_animation_set.library.tile_size
         self.add_animation(animation_stem)
@@ -48,9 +55,22 @@ class Character(ICollidableSprite):
         animations = animation_set.library.animations
         self.fps |= {k: animations[k].fps for k in animations}
         self.animation_states |= {k: AnimationPlayer(animation_set, k) for k in animations}
-        self.shape_bounds |= {
-            k: bounds for k in animations if (bounds := animation_set.get_content_bounds(k)) is not None
-        }
+        for k in animations:
+            bounds = animation_set.get_content_bounds(k)
+            metadata = animations[k].metadata
+            if bounds:
+                self.anim_props["shape_bounds"][k] = bounds
+            if metadata:
+                for mk, v in metadata.items():
+                    self.anim_props["metadata"][f"{k}.{mk}"] = v
+
+    def anim_activation_state(self) -> Literal["active", "inactive"]:
+        activation_frame = self.anim_props["metadata"].get(f"{self.current_state}.activation", 0)
+        deactivation_frame = self.anim_props["metadata"].get(f"{self.current_state}.deactivation", 0)
+        current_frame = self.animation_states[self.current_state].frame_index
+        if activation_frame <= current_frame <= deactivation_frame:
+            return "active"
+        return "inactive"
 
     def get_state(self) -> str:
         raise NotImplementedError()
@@ -95,7 +115,7 @@ class Character(ICollidableSprite):
         return current_frame
 
     def get_blit_pos(self, frame: Surface, offset: tuple[float, float]):
-        shape_bound = self.shape_bounds.get(self.current_state)
+        shape_bound = self.anim_props["shape_bounds"].get(self.current_state)
         if shape_bound is not None:
             frame = frame.subsurface(shape_bound)
         l, _, r, b = get_shape_aabb(self.x, self.y, self.collision_shape)

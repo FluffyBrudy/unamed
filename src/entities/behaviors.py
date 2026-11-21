@@ -2,6 +2,7 @@ from enum import Enum, auto
 from typing import Literal
 
 import pygame
+from tilemap_parser import get_shape_aabb
 
 from src.base.character import Character
 
@@ -25,6 +26,9 @@ class KillableBehavior:
 
         entity.can_hurt = self.can_hurt
         entity.can_kill = self.can_kill
+
+    def apply_cd(self):
+        self.cd = self.hit_cd
 
     def can_hurt(self):
         return not self.is_dead and self.cd == 0
@@ -56,7 +60,13 @@ class KillableBehavior:
 
 
 class ChaserBehavior:
-    def __init__(self, owner: Character, target: Character, visible_dist: float, attack_dist: float) -> None:
+    def __init__(
+        self,
+        owner: Character,
+        target: Character,
+        visible_dist: float,
+        attack_dist: float,
+    ) -> None:
         self.state: Literal["idle", "chase", "attack", "wait"] = "idle"
         self.owner = owner
         self.target = target

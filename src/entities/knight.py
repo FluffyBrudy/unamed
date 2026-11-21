@@ -8,7 +8,7 @@ from tilemap_parser import get_shape_aabb
 from src.base.character import Character
 from src.entities.behaviors import KillableBehavior
 from src.loader import SharedData
-from src.settings import SOILDER_EID
+from src.settings import KNIGHT_EID
 
 HEAD_TURN_NONE = 0
 HEAD_TURN_LEFT = -1
@@ -17,7 +17,7 @@ HEAD_TURN_RIGHT = 1
 
 class Knight(Character):
     def __init__(self, x: float, y: float):
-        super().__init__(x, y, "dark_knight-192x192.anim", "dark_knight.collision", "idle", SOILDER_EID)
+        super().__init__(x, y, "dark_knight-192x192.anim", "dark_knight.collision", "idle", KNIGHT_EID)
 
         # fmt: off
         registered_keys = (
@@ -29,7 +29,7 @@ class Knight(Character):
         self.add_animation("dark-knight-336x105.anim")
         self.add_animation("dark-knight-168x207.anim")
         self.is_attacking = False
-        self.killable_behavior = KillableBehavior(self, 0.25, 5, "death")
+        self.killable_behavior = KillableBehavior(self, 1.5, 5, "death")
         self.debug = SharedData().debug
         self._last_debug_state = self.current_state
         self._register_debug_watches()
@@ -61,6 +61,10 @@ class Knight(Character):
 
     def can_kill(self) -> bool:
         return self.killable_behavior.can_kill()
+
+    def on_collision(self, **kwargs):
+        if self.can_hurt():
+            self.killable_behavior.apply_cd()
 
     def handle_event(self, event: Event):
         if event.type == pygame.KEYDOWN:

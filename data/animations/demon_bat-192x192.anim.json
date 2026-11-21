@@ -1,13 +1,7 @@
 {
   "spritesheet_path": "../assets/pixramen-valley/demon-bat/demon-bat-192x192.png",
-  "tile_size": [
-    192,
-    192
-  ],
-  "grid_offset": [
-    0,
-    0
-  ],
+  "tile_size": [192, 192],
+  "grid_offset": [0, 0],
   "animations": {
     "bite": {
       "name": "bite",
@@ -45,11 +39,11 @@
           "duration_ms": 100.0
         },
         {
-          "variant_id": 8,
+          "variant_id": 9,
           "duration_ms": 100.0
         },
         {
-          "variant_id": 9,
+          "variant_id": 8,
           "duration_ms": 100.0
         },
         {
@@ -70,7 +64,11 @@
         }
       ],
       "loop": false,
-      "fps": 60.0
+      "fps": 120.0,
+      "metadata": {
+        "activation": 6,
+        "deactivation": 10
+      }
     },
     "death": {
       "name": "death",

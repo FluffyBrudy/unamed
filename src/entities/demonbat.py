@@ -5,21 +5,25 @@ from tilemap_parser import check_collision
 from src.base.character import Character
 from src.entities.behaviors import ChaserBehavior, KillableBehavior
 from src.entities.knight import get_shape_aabb
-from tests.test_objectmanager import EID_ENEMY
+from src.loader import SharedData
+from src.settings import DEFAULT_ENEMY_EID
 
 
 class DemonBat(Character):
     def __init__(self, x: float, y: float, target: Character) -> None:
-        super().__init__(x, y, "demon_bat-192x192.anim", "demon_bat.collision", "fly", EID_ENEMY)
+        super().__init__(x, y, "demon_bat-192x192.anim", "demon_bat.collision", "fly", DEFAULT_ENEMY_EID)
         self.killable_behavior = KillableBehavior(self, 0.25, 5, "death")
         l, t, r, b = get_shape_aabb(self.x, self.y, self.collision_shape)
         w, h = (r - l), (b - t)
-        self.chase_behavior = ChaserBehavior(self, target, (w + h), (w + h) // 2)
+        self.chase_behavior = ChaserBehavior(self, target, (w + h), 50)
+        SharedData().debug.watch("bat/attack", lambda: self.chase_behavior.vector)
+        SharedData().debug.watch("bat/behave_state", lambda: self.chase_behavior.state)
+        SharedData().debug.watch("bat/state", lambda: self.current_state)
+        self.direction.x = 1
 
     def get_state(self) -> str:
-        if self.chase_behavior.state == "attack":
-            if check_collision(self, self.chase_behavior.target):
-                return "bite"
+        if self.chase_behavior.state == "attack" and self.chase_behavior.target.can_hurt():
+            return "bite"
         return "fly"
 
     def can_hurt(self) -> bool:
@@ -33,13 +37,15 @@ class DemonBat(Character):
         if state == "idle":
             self.vx = 0
             self.vy = 0
-        elif state == "wait":
+        elif state == "wait" or state == "attack":
             self.vx = 0  # 1
             self.vy = 0
         elif state == "chase":
             norm_x, norm_y = self.chase_behavior.vector.normalize()
             self.vx, self.vy = norm_x * 150, norm_y * 150
-        self.flipped = self.vx < 0
+        if self.vx != 0:
+            self.direction.x = -1 if self.vx < 0 else 1
+        self.flipped = self.direction.x < 0
         self.collision_runner.move_grounded(self, None, None, dt, (self.vx, self.vy))
 
     def update(self, dt: float):

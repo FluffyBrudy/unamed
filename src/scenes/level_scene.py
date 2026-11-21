@@ -4,8 +4,10 @@ from tilemap_parser import Camera
 from src.base.scene import Scene
 from src.entities.demonbat import DemonBat
 from src.entities.knight import Knight
+from src.lib.collision_registry import default_player_enemy_collision
 from src.loader import LevelData, SharedData
 from src.objectmanager import ObjectManager
+from src.settings import DEFAULT_ENEMY_EID, KNIGHT_EID
 
 
 class LevelScene(Scene):
@@ -28,6 +30,12 @@ class LevelScene(Scene):
         self.load_entity()
 
     def load_entity(self):
+        self.object_manager.register_handler(
+            KNIGHT_EID,
+            DEFAULT_ENEMY_EID,
+            default_player_enemy_collision,  # type: ignore
+        )
+
         for entity, coors in LevelData().entities.items():
             for x, y in coors:
                 print(entity)
