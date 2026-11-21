@@ -19,6 +19,7 @@ class LevelScene(Scene):
         SharedData().preload(render_scale=LevelData().level_render_scale)
 
         self.tile_layer_renderer = LevelData().tile_layer_renderer
+        self.parallax = LevelData().parallax
 
         self.player = Knight(*LevelData().entities["dark_knight"][0])
         self.camera = LevelData().camera
@@ -54,5 +55,6 @@ class LevelScene(Scene):
         self.player.handle_event(event)
 
     def render(self, screen: pygame.Surface):
+        self.parallax.render(screen, *self.camera.offset)
         self.tile_layer_renderer.render(screen, self.camera.offset)
         self.object_manager.render(screen, self.camera.offset)

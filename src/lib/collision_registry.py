@@ -1,3 +1,5 @@
+from typing import Any
+
 from tilemap_parser import CollisionHit
 
 from src.base.character import Character

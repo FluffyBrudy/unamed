@@ -1,10 +1,12 @@
 import typing
 from collections import defaultdict
+from math import ceil
 
 import pygame
 from pygame import Surface
 from pygame.typing import Point
 from pygkit.debug import Debug
+from pygkit.parallax import ParallaxBackground, ParallaxLayer
 from tilemap_parser import (
     Camera,
     CharacterCollision,
@@ -110,7 +112,7 @@ class LevelData:
             raise ValueError("Surface Uninitialized")
 
         data_path = ROOT / "data"
-        mapdata = load_map(data_path / "maps" / f"{map_suffix}")
+        mapdata = load_map(data_path / "maps" / f"{map_suffix}", offset_y=3)
         collision_tileset = load_tileset_collision(data_path / "collision/tileset.collision.json")
 
         if collision_tileset is None:
@@ -126,6 +128,7 @@ class LevelData:
 
         self.entities: dict[str, list[Point]] = defaultdict(list)
         self._load_object_data(mapdata)
+        self._load_parallax_data(mapdata)
 
         self.tilesize = mapdata.tile_size
         self.mapsize = mapdata.map_size
@@ -140,3 +143,20 @@ class LevelData:
                 if layer.name == "entities":
                     if props.get("name") is not None:
                         self.entities[props["name"]].append((x, y))
+
+    def _load_parallax_data(self, mapdata: TilemapData):
+        parallax_layers: list[ParallaxLayer] = []
+        i = 0
+
+        surfaces = mapdata.get_image_layer_surfaces()
+        for _, surf in surfaces:
+            i += 0.1
+            if surf is None:
+                continue
+            target_h = self.camera.viewport_h
+            target_w = (surf.width / surf.height) * target_h
+            surf = pygame.transform.scale(surf, (target_w, target_h))
+            parallax_layer = ParallaxLayer(surf, factor=(i, 0))
+            parallax_layers.append(parallax_layer)
+
+        self.parallax = ParallaxBackground(parallax_layers)

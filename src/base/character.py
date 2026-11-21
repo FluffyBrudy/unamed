@@ -68,7 +68,7 @@ class Character(ICollidableSprite):
         activation_frame = self.anim_props["metadata"].get(f"{self.current_state}.activation", 0)
         deactivation_frame = self.anim_props["metadata"].get(f"{self.current_state}.deactivation", 0)
         current_frame = self.animation_states[self.current_state].frame_index
-        if activation_frame <= current_frame <= deactivation_frame:
+        if current_frame >= activation_frame and current_frame < deactivation_frame:
             return "active"
         return "inactive"
 

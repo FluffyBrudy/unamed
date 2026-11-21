@@ -12,7 +12,7 @@ class Game:
     HEIGHT = 720
     FPS = 60
     TITLE = "Pygame"
-    BG_COLOR = (30, 30, 30)
+    BG_COLOR = (74, 88, 92)
 
     def __init__(self) -> None:
         self.running = True
