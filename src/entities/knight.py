@@ -9,7 +9,7 @@ from src.base.character import Character
 from src.entities.behaviors import KillableBehavior
 from src.loader import SharedData
 from src.settings import KNIGHT_EID
-from src.utils import flicker, silhouette_effect
+from src.utils import flicker, move_towards, silhouette_effect
 
 HEAD_TURN_NONE = 0
 HEAD_TURN_LEFT = -1
@@ -31,7 +31,8 @@ class Knight(Character):
         # fmt: off
         registered_keys = (
             pygame.K_LEFT, pygame.K_RIGHT,
-            pygame.K_SPACE, pygame.K_RETURN
+            pygame.K_SPACE, pygame.K_RETURN,
+            pygame.K_1
         )
         # fmt: on
         self.keys_pressed = dict.fromkeys(registered_keys, False)
@@ -55,6 +56,8 @@ class Knight(Character):
     def get_state(self) -> str:
         if self.killable_behavior.reach_hit_count():
             return "death"
+        if self.keys_pressed[pygame.K_1]:
+            return "dash"
         if self.vy > 0:
             return "fall"
         elif self.vy < 0:
@@ -88,11 +91,18 @@ class Knight(Character):
         if self.is_attacking:
             input_x = 0
         jumped = self.on_ground and self.keys_pressed[pygame.K_SPACE] and not self.is_attacking
+        if jumped:
+            self.vy = -400
         if input_x != 0 and self.direction.x != input_x:
             self.direction.x = input_x
             self.flipped = self.direction.x < 0
             self.flip_character_shape(self.flipped)
-        self.collision_runner.move_platformer_with_slide(self, None, None, dt, input_x, jumped)
+        if self.keys_pressed[pygame.K_1]:
+            self.vx = self.direction.x * 400
+        self.vx = move_towards(self.vx, int(self.collision_runner.horizontal_speed * input_x), dt * 800)
+        if not self.on_ground:
+            self.vy += self.collision_runner.gravity * dt
+        self.collision_runner.move_platformer_with_slide(self, None, None, dt, velocity=(self.vx, self.vy))
 
     def manage_state(self):
         was_attacking = self.is_attacking

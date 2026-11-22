@@ -49,3 +49,9 @@ def silhouette_effect(
 ):
     mask = pygame.mask.from_surface(surface)
     return mask.to_surface(surface=dest_surf, setcolor=(*color[:3], 255), unsetcolor=(0, 0, 0, 0))
+
+
+def move_towards(src: float, dest: float, dx: float):
+    if src > dest:
+        return max(src - dx, dest)
+    return min(src + dx, dest)

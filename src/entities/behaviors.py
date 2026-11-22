@@ -30,30 +30,29 @@ class KillableBehavior:
     def apply_cd(self):
         self.cd = self.hit_cd
 
-    def can_hurt(self):
-        return not self.is_dead and self.cd == 0
-
     def reach_hit_count(self):
         return self.hit_count > self.max_hit_count
 
+    def can_hurt(self):
+        return not self.is_dead and self.cd == 0
+
     def can_kill(self):
-        if self.is_dead:
-            return True
-        return self.entity.current_state == self.kill_state and self.entity.has_anim_finished()
+        return (
+            not self.is_dead
+            and self.reach_hit_count()
+            and self.entity.current_state == self.kill_state
+            and self.entity.has_anim_finished()
+        )
 
     def on_collision(self, **kwargs):
-        if self.is_dead:
-            return
         full = kwargs.get("full", False)
-
         if full:
             self.hit_count = self.max_hit_count + 1
-            self.is_dead = True
-        else:
-            self.cd = self.hit_cd
-            self.hit_count += 1
-            if self.hit_count > self.max_hit_count:
-                self.is_dead = True
+        if self.is_dead or self.cd != 0 or self.reach_hit_count():
+            return
+
+        self.hit_count += 1
+        self.cd = self.hit_cd
 
     def update(self, dt: float):
         if self.cd:

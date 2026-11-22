@@ -3,7 +3,7 @@ from collections import defaultdict
 from math import ceil
 
 import pygame
-from pygame import Surface
+from pygame import Rect, Surface
 from pygame.typing import Point
 from pygkit.debug import Debug
 from pygkit.parallax import ParallaxBackground, ParallaxLayer
@@ -123,7 +123,7 @@ class LevelData:
         if collision_tileset is None:
             raise ValueError("meow")
 
-        self.physics_world = PhysicsWorld.from_map(mapdata, collision_tileset)
+        self.physics_world = PhysicsWorld.from_map(mapdata, collision_tileset, use_gids=True)
         self.collision_runner = CollisionRunner.from_world(self.physics_world)
         self.tile_layer_renderer = TileLayerRenderer(mapdata)
         self.camera = Camera(*primary_surface.size, mode="deadzone")
@@ -131,15 +131,19 @@ class LevelData:
 
         self.camera.set_bounds_from_map(mapdata)
 
-        self.entities: dict[str, list[Point]] = defaultdict(list)
         self._load_object_data(mapdata)
         self._load_parallax_data(mapdata)
+        self._load_lightening_tiles_pos(mapdata)
 
         self.tilesize = mapdata.tile_size
         self.mapsize = mapdata.map_size
         self.tileset = mapdata.surfaces[0]
 
+        self.tile_layer_renderer.warm_cache()
+
     def _load_object_data(self, mapdata: TilemapData):
+        self.entities: dict[str, list[Point]] = defaultdict(list)
+
         for layer in mapdata.get_layers(layer_type="object"):
             objects = mapdata.get_object_surfaces(layer.id, scaled=True)
             for surf, x, y, oid in objects:
@@ -148,6 +152,31 @@ class LevelData:
                 if layer.name == "entities":
                     if props.get("name") is not None:
                         self.entities[props["name"]].append((x, y))
+
+    def _load_lightening_tiles_pos(self, mapdata: TilemapData):
+        lightning_tiles = {
+            int(v)
+            for ts in mapdata.parsed.tilesets
+            for v, props in ts.tile_properties.items()
+            if props.get("name") == "light_pole"
+        }
+
+        vc: dict[int, Rect] = {}
+
+        positions: list[tuple[Rect, Rect]] = []
+        for _, pos, tile in mapdata.find_tile_placements(0, lightning_tiles):
+            if vc.get(tile.variant, None):
+                bound = vc[tile.variant]
+            else:
+                tile_surf = mapdata.get_image(tile.variant)
+                if tile_surf is None:
+                    continue
+                bound = tile_surf.get_bounding_rect()
+                vc[tile.variant] = bound
+            full_rect = Rect(mapdata.cell_world_rect(pos))
+            positions.append((full_rect, bound))
+
+        self.light_pole_positions = positions
 
     def _load_parallax_data(self, mapdata: TilemapData):
         parallax_layers: list[ParallaxLayer] = []
@@ -165,3 +194,7 @@ class LevelData:
             parallax_layers.append(parallax_layer)
 
         self.parallax = ParallaxBackground(parallax_layers)
+
+    def unload(self):
+        del self.entities
+        del self.light_pole_positions

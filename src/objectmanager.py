@@ -52,9 +52,7 @@ class ObjectManager:
                 self.collision_manager.remove_object(obj)
                 del self.object_container[obj_index]
 
-        for collision_hit in self.collision_manager.check_all_collisions(
-            hit_once=True
-        ):
+        for collision_hit in self.collision_manager.check_all_collisions(hit_once=True):
             self.resolve_collision(collision_hit)
 
     def render(self, surface: Surface, offset: tuple[float, float]):

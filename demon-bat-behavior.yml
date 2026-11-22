@@ -1,0 +1,60 @@
+killable:
+  demon_bat:
+    properties:
+      attack_count: full
+      state: death
+      can_hurt: false
+      can_kill:
+        all:
+          - state: death
+          - entity_anim_finished: true
+      movement: zero
+      cd: full
+
+    methods:
+      get_state:
+        label: for death
+        any:
+          - state: death
+          - has_reached_count: true
+        result: death
+
+      handle_movement:
+        if:
+          - state: knockdown
+        knockdown_result:
+          properties:
+            vx: sign(target.x-self.v) * SPEED
+        if_1:
+          - state: in (idle, wait, attack, death)
+        immobile_result:
+          properties:
+            vx: 0
+            vy: 0
+        if_2:
+
+  method:
+    can_hurt:
+      all:
+        - dead: false
+        - cd: 0
+
+    can_kill:
+      any:
+        - is_dead: true
+        - all:
+            - reach_count: true
+            - state: death
+            - entity_anim_finished: true
+
+    on_collision:
+      is_full:
+        hit_count: max_hit_count+1
+      any:
+        - dead: true
+        - cd <> 0: true
+        - count > max_count: true
+        - properties:
+          count: +1
+          cd: full_cd
+          is_dead: out_of_scope untouched

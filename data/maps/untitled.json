@@ -2,8 +2,8 @@
   "meta": {
     "tile_size": "64;64",
     "map_size": "30;8",
-    "zoom_level": 1.299999999999999,
-    "scroll": "647.0053549579407;17.353471575182425",
+    "zoom_level": 0.6999999999999997,
+    "scroll": "34.059678041256916;-145.5579975579979",
     "offset": "0;0",
     "render_scale": 1.0,
     "version": "1.1"
@@ -14,7 +14,12 @@
         "path": "../assets/tileset.png",
         "type": "tile",
         "tile_count": 108,
-        "firstgid": 0
+        "firstgid": 0,
+        "tile_properties": {
+          "63": {
+            "name": "light_pole"
+          }
+        }
       },
       {
         "path": "../assets/pixramen-valley/dark-knight/dark_knight.png",
@@ -759,38 +764,6 @@
             "flip_v": false,
             "gid": 31
           },
-          "6;1": {
-            "pos": "6;1",
-            "ttype": 0,
-            "variant": 5,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 5
-          },
-          "6;2": {
-            "pos": "6;2",
-            "ttype": 0,
-            "variant": 17,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 17
-          },
-          "6;3": {
-            "pos": "6;3",
-            "ttype": 0,
-            "variant": 29,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 29
-          },
-          "6;4": {
-            "pos": "6;4",
-            "ttype": 0,
-            "variant": 41,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 41
-          },
           "6;5": {
             "pos": "6;5",
             "ttype": 0,
@@ -798,182 +771,6 @@
             "flip_h": false,
             "flip_v": false,
             "gid": 53
-          },
-          "7;1": {
-            "pos": "7;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "8;1": {
-            "pos": "8;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "9;1": {
-            "pos": "9;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "10;1": {
-            "pos": "10;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "11;1": {
-            "pos": "11;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "12;1": {
-            "pos": "12;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "13;1": {
-            "pos": "13;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "14;1": {
-            "pos": "14;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "15;1": {
-            "pos": "15;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "16;1": {
-            "pos": "16;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "17;1": {
-            "pos": "17;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "18;1": {
-            "pos": "18;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "19;1": {
-            "pos": "19;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "20;1": {
-            "pos": "20;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "21;1": {
-            "pos": "21;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "22;1": {
-            "pos": "22;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "23;1": {
-            "pos": "23;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "24;1": {
-            "pos": "24;1",
-            "ttype": 0,
-            "variant": 6,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 6
-          },
-          "25;1": {
-            "pos": "25;1",
-            "ttype": 0,
-            "variant": 7,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 7
-          },
-          "25;2": {
-            "pos": "25;2",
-            "ttype": 0,
-            "variant": 19,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 19
-          },
-          "25;3": {
-            "pos": "25;3",
-            "ttype": 0,
-            "variant": 31,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 31
-          },
-          "25;4": {
-            "pos": "25;4",
-            "ttype": 0,
-            "variant": 43,
-            "flip_h": false,
-            "flip_v": false,
-            "gid": 43
           },
           "25;5": {
             "pos": "25;5",
@@ -2184,6 +1981,39 @@
             "flip_h": false,
             "flip_v": false,
             "gid": 63
+          },
+          "14;4": {
+            "pos": "14;4",
+            "ttype": 0,
+            "variant": 63,
+            "flip_h": false,
+            "flip_v": false,
+            "gid": 63,
+            "properties": {
+              "name": "light_pole"
+            }
+          },
+          "20;4": {
+            "pos": "20;4",
+            "ttype": 0,
+            "variant": 63,
+            "flip_h": false,
+            "flip_v": false,
+            "gid": 63,
+            "properties": {
+              "name": "light_pole"
+            }
+          },
+          "23;4": {
+            "pos": "23;4",
+            "ttype": 0,
+            "variant": 63,
+            "flip_h": false,
+            "flip_v": false,
+            "gid": 63,
+            "properties": {
+              "name": "light_pole"
+            }
           }
         },
         "properties": {}
@@ -2201,8 +2031,8 @@
         "objects": {
           "2": {
             "area": {
-              "x": 983,
-              "y": 87,
+              "x": 69,
+              "y": 151,
               "w": 62,
               "h": 63
             },
@@ -2222,9 +2052,57 @@
             "tileset_type": "object",
             "variant": 0,
             "properties": {}
+          },
+          "4": {
+            "area": {
+              "x": 500,
+              "y": 69,
+              "w": 189,
+              "h": 191
+            },
+            "ttype": 2,
+            "tileset_type": "object",
+            "variant": 0,
+            "properties": {}
+          },
+          "5": {
+            "area": {
+              "x": 650,
+              "y": 169,
+              "w": 189,
+              "h": 191
+            },
+            "ttype": 2,
+            "tileset_type": "object",
+            "variant": 0,
+            "properties": {}
+          },
+          "6": {
+            "area": {
+              "x": 945,
+              "y": 21,
+              "w": 189,
+              "h": 191
+            },
+            "ttype": 2,
+            "tileset_type": "object",
+            "variant": 0,
+            "properties": {}
+          },
+          "7": {
+            "area": {
+              "x": 1455,
+              "y": 134,
+              "w": 189,
+              "h": 191
+            },
+            "ttype": 2,
+            "tileset_type": "object",
+            "variant": 0,
+            "properties": {}
           }
         },
-        "next_object_id": 4,
+        "next_object_id": 8,
         "properties": {}
       }
     ]

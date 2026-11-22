@@ -1,12 +1,10 @@
 import pygame
-from pygame import Surface
-from tilemap_parser import check_collision
 
 from src.base.character import Character
 from src.entities.behaviors import ChaserBehavior, KillableBehavior
 from src.entities.knight import get_shape_aabb
-from src.loader import SharedData
 from src.settings import DEFAULT_ENEMY_EID
+from src.utils import sign
 
 
 class DemonBat(Character):
@@ -19,6 +17,8 @@ class DemonBat(Character):
         self.direction.x = 1
 
     def get_state(self) -> str:
+        if self.killable_behavior.reach_hit_count() or self.current_state == "death":
+            return "death"
         if self.killable_behavior.cd != 0:
             return "knockback"
         if self.chase_behavior.state == "attack" and self.chase_behavior.target.can_hurt():
@@ -36,15 +36,11 @@ class DemonBat(Character):
             self.killable_behavior.on_collision()
 
     def handle_movement(self, dt: float):
-
         state = self.chase_behavior.state
-        if self.killable_behavior.cd != 0:
-            self.vx = -dt * 300
-        elif state == "idle":
+        if self.current_state == "knockback":
+            self.vx = sign(-self.chase_behavior.vector.x) * 400
+        elif state in ("idle", "wait", "attack", "death"):
             self.vx = 0
-            self.vy = 0
-        elif state == "wait" or state == "attack":
-            self.vx = 0  # 1
             self.vy = 0
         elif state == "chase":
             norm_x, norm_y = self.chase_behavior.vector.normalize()
