@@ -27,9 +27,7 @@ class LevelScene(Scene):
         SharedData().debug.set_camera(self.camera)
 
         self.object_manager = ObjectManager()
-        self.object_manager.add_object(
-            self.player, hitboxes=SharedData().character_hitboxes["dark-knight-336x105.hitbox"]
-        )
+        self.object_manager.add_object(self.player, hitbox_state=self.player.hitbox_state)
         self.load_entity()
 
     def load_entity(self):

@@ -73,7 +73,12 @@ class SharedData:
                 assert collision is not None
                 character_collisions[collision_path.stem] = collision
             elif collision_path.suffixes[0] == ".hitbox":
-                collision = get_cached_character_hitboxes(collision_path, render_scale=self.render_scale)
+                anim_stem = collision_path.stem.removesuffix(".hitbox") + ".anim"
+                collision = get_cached_character_hitboxes(
+                    collision_path,
+                    anim_library=self.state_animations[anim_stem].library,
+                    render_scale=self.render_scale,
+                )
                 assert collision is not None
                 hitbox_collisions[collision_path.stem] = collision
         return {"character_collisions": character_collisions, "hitbox_collisions": hitbox_collisions}

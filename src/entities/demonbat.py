@@ -12,7 +12,7 @@ from src.settings import DEFAULT_ENEMY_EID
 class DemonBat(Character):
     def __init__(self, x: float, y: float, target: Character) -> None:
         super().__init__(x, y, "demon_bat-192x192.anim", "demon_bat.collision", "fly", DEFAULT_ENEMY_EID)
-        self.killable_behavior = KillableBehavior(self, 0.25, 5, "death")
+        self.killable_behavior = KillableBehavior(self, 1.0, 3, "death")
         l, t, r, b = get_shape_aabb(self.x, self.y, self.collision_shape)
         w, h = (r - l), (b - t)
         self.chase_behavior = ChaserBehavior(self, target, (w + h), 50)

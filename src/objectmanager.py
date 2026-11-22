@@ -1,7 +1,7 @@
 from collections.abc import Callable
 
 from pygame.surface import Surface
-from tilemap_parser import CharacterHitboxes, HitboxState
+from tilemap_parser import HitboxState
 from tilemap_parser.runtime.collision.hit import CollisionHit
 from tilemap_parser.runtime.collision.manager import ObjectCollisionManager
 
@@ -24,16 +24,12 @@ class ObjectManager:
     def add_object(
         self,
         obj: WorldObject,
-        hitboxes: CharacterHitboxes | None = None,
-    ) -> HitboxState | None:
-
-        state: HitboxState | None = None
-        if hitboxes is not None:
-            state = HitboxState(hitboxes, obj)
-            self.collision_manager.attach_hitboxes(obj, state)
+        hitbox_state: HitboxState | None = None,
+    ) -> None:
+        if not isinstance(obj, WorldObject):
+            return
+        self.collision_manager.add_object(obj, hitbox_state=hitbox_state)
         self.object_container.append(obj)
-        self.collision_manager.add_object(obj)
-        return state
 
     def resolve_collision(self, collision_hit: CollisionHit):
         obj_a: WorldObject = collision_hit.object_a  # type: ignore
@@ -56,7 +52,9 @@ class ObjectManager:
                 self.collision_manager.remove_object(obj)
                 del self.object_container[obj_index]
 
-        for collision_hit in self.collision_manager.check_all_collisions():
+        for collision_hit in self.collision_manager.check_all_collisions(
+            hit_once=True
+        ):
             self.resolve_collision(collision_hit)
 
     def render(self, surface: Surface, offset: tuple[float, float]):

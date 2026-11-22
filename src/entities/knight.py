@@ -3,7 +3,7 @@ from random import random
 import pygame
 from pygame import Event
 from pygame.rect import Rect
-from tilemap_parser import get_shape_aabb
+from tilemap_parser import get_shape_aabb, shape_to_points
 
 from src.base.character import Character
 from src.entities.behaviors import KillableBehavior
@@ -18,7 +18,15 @@ HEAD_TURN_RIGHT = 1
 
 class Knight(Character):
     def __init__(self, x: float, y: float):
-        super().__init__(x, y, "dark_knight-192x192.anim", "dark_knight.collision", "idle", KNIGHT_EID)
+        super().__init__(
+            x,
+            y,
+            "dark_knight-192x192.anim",
+            "dark_knight.collision",
+            "idle",
+            KNIGHT_EID,
+            hitboxes=SharedData().character_hitboxes["dark-knight-336x105.hitbox"],
+        )
 
         # fmt: off
         registered_keys = (
@@ -43,6 +51,15 @@ class Knight(Character):
         debug.watch("player/can_hurt", lambda: self.killable_behavior.can_hurt())
         debug.watch("player/ground", lambda: self.on_ground)
         debug.watch("player/pos", lambda: f"{self.x:.0f}, {self.y:.0f}")
+        debug.watch(
+            "player/hitbox",
+            lambda: (
+                f"{self.hitbox_state.window_id} "
+                f"x{len(self.hitbox_state.collision_shapes)}"
+                if self.hitbox_state is not None and self.hitbox_state.active
+                else "off"
+            ),
+        )
 
     def get_state(self) -> str:
         if self.killable_behavior.reach_hit_count():
@@ -115,6 +132,7 @@ class Knight(Character):
         self.update_animation(dt)
         self.handle_movement(dt)
         self.manage_state()
+        self.sync_hitboxes()
 
     def _render_debug(self):
         debug = self.debug
@@ -134,6 +152,15 @@ class Knight(Character):
             space="world",
         )
         debug.point((self.x, self.y), (255, 230, 120), size=4, space="world")
+
+        if self.hitbox_state is not None:
+            for shape in self.hitbox_state.collision_shapes:
+                debug.polygon(
+                    shape_to_points(shape, self.x, self.y),
+                    (255, 170, 80),
+                    width=2,
+                    space="world",
+                )
 
         cd = self.killable_behavior.cd
         hit_cd = self.killable_behavior.hit_cd

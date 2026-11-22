@@ -3,7 +3,14 @@ from typing import Any, Literal, TypedDict
 import pygame
 from pygame import Surface, Vector2
 from pygame.rect import Rect
-from tilemap_parser import AnimationPlayer, ICollidableSprite, flip_character_shape, get_shape_aabb
+from tilemap_parser import (
+    AnimationPlayer,
+    CharacterHitboxes,
+    HitboxState,
+    ICollidableSprite,
+    flip_character_shape,
+    get_shape_aabb,
+)
 
 from src.loader import LevelData, SharedData
 
@@ -22,6 +29,8 @@ class Character(ICollidableSprite):
         collision_stem: str,
         default_state: str,
         eid: int,
+        *,
+        hitboxes: CharacterHitboxes | None = None,
     ) -> None:
         self.x = x
         self.y = y
@@ -49,6 +58,7 @@ class Character(ICollidableSprite):
         self.flipped = False
 
         self.direction = Vector2(1, 0)
+        self.hitbox_state: HitboxState | None = HitboxState(hitboxes, self) if hitboxes is not None else None
 
     def add_animation(self, animation_stem: str):
         animation_set = SharedData().state_animations[animation_stem]
@@ -107,6 +117,37 @@ class Character(ICollidableSprite):
         anim_state = self.animation_states[self.current_state]
         fps = self.fps[self.current_state]
         anim_state.update(dt * (fps / 60) * 1000)
+
+    def sync_hitboxes(self) -> None:
+        state = self.hitbox_state
+        if state is None:
+            return
+
+        clip = self.current_state
+        frame_index = self.animation_states[clip].frame_index
+        bounds = self.anim_props["shape_bounds"].get(clip)
+        if bounds is not None:
+            frame_x = float(bounds.x)
+            frame_y = float(bounds.y)
+            frame_w = float(bounds.width)
+            frame_h = float(bounds.height)
+        else:
+            frame = self.get_frame()
+            if frame is None:
+                state.sync(clip, frame_index, flip_h=self.flipped)
+                return
+            frame_x = frame_y = 0.0
+            frame_w, frame_h = frame.get_size()
+
+        left, _, right, bottom = get_shape_aabb(self.x, self.y, self.collision_shape)
+        frame_left = (left + right) / 2 - frame_w / 2 - frame_x
+        frame_top = bottom - frame_h - frame_y
+        state.sync(
+            clip,
+            frame_index,
+            flip_h=self.flipped,
+            origin=(frame_left - self.x, frame_top - self.y),
+        )
 
     def get_frame(self):
         current_frame = self.animation_states[self.current_state].get_current_image()

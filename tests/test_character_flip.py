@@ -2,7 +2,7 @@ import pygame
 import pytest
 from tilemap_parser import RectangleShape
 
-from src.entities.knight import Soilder
+from src.entities.knight import Knight
 from src.loader import LevelData, SharedData
 
 
@@ -17,7 +17,7 @@ def initialized_game():
 
 
 def test_character_base_tile_size_and_flip_consistency(initialized_game):
-    soldier = Soilder(1560.2, 178.257)
+    soldier = Knight(1560.2, 178.257)
     assert soldier.base_tile_size == (192, 192)
 
     # In idle state (192x192)
@@ -41,8 +41,13 @@ def test_character_base_tile_size_and_flip_consistency(initialized_game):
 
 
 def test_soilder_flipping_while_attacking_maintains_y_position(initialized_game):
-    soldier = Soilder(1560.2, 178.25720608559953)
-    soldier.on_ground = True
+    soldier = Knight(1560.2, 0.0)
+    for _ in range(300):
+        soldier.update(1 / 60)
+        if soldier.on_ground:
+            break
+    assert soldier.on_ground
+    soldier.vy = 0.0
     initial_y = soldier.y
 
     # Enter pressed (attack mode)
