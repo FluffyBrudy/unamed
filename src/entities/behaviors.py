@@ -50,6 +50,7 @@ class KillableBehavior:
             self.hit_count = self.max_hit_count + 1
             self.is_dead = True
         else:
+            self.cd = self.hit_cd
             self.hit_count += 1
             if self.hit_count > self.max_hit_count:
                 self.is_dead = True

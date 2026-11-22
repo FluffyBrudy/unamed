@@ -51,15 +51,6 @@ class Knight(Character):
         debug.watch("player/can_hurt", lambda: self.killable_behavior.can_hurt())
         debug.watch("player/ground", lambda: self.on_ground)
         debug.watch("player/pos", lambda: f"{self.x:.0f}, {self.y:.0f}")
-        debug.watch(
-            "player/hitbox",
-            lambda: (
-                f"{self.hitbox_state.window_id} "
-                f"x{len(self.hitbox_state.collision_shapes)}"
-                if self.hitbox_state is not None and self.hitbox_state.active
-                else "off"
-            ),
-        )
 
     def get_state(self) -> str:
         if self.killable_behavior.reach_hit_count():
@@ -82,7 +73,7 @@ class Knight(Character):
 
     def on_collision(self, **kwargs):
         if self.can_hurt():
-            self.killable_behavior.apply_cd()
+            self.killable_behavior.on_collision()
 
     def handle_event(self, event: Event):
         if event.type == pygame.KEYDOWN:

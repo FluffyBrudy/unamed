@@ -16,9 +16,6 @@ class DemonBat(Character):
         l, t, r, b = get_shape_aabb(self.x, self.y, self.collision_shape)
         w, h = (r - l), (b - t)
         self.chase_behavior = ChaserBehavior(self, target, (w + h), 50)
-        SharedData().debug.watch("bat/attack", lambda: self.chase_behavior.vector)
-        SharedData().debug.watch("bat/behave_state", lambda: self.chase_behavior.state)
-        SharedData().debug.watch("bat/state", lambda: self.current_state)
         self.direction.x = 1
 
     def get_state(self) -> str:
@@ -36,7 +33,7 @@ class DemonBat(Character):
 
     def on_collision(self, **kwargs):
         if self.can_hurt():
-            self.killable_behavior.apply_cd()
+            self.killable_behavior.on_collision()
 
     def handle_movement(self, dt: float):
 
