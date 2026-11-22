@@ -22,6 +22,8 @@ class DemonBat(Character):
         self.direction.x = 1
 
     def get_state(self) -> str:
+        if self.killable_behavior.cd != 0:
+            return "knockback"
         if self.chase_behavior.state == "attack" and self.chase_behavior.target.can_hurt():
             return "bite"
         return "fly"
@@ -32,9 +34,16 @@ class DemonBat(Character):
     def can_kill(self) -> bool:
         return self.killable_behavior.can_kill()
 
+    def on_collision(self, **kwargs):
+        if self.can_hurt():
+            self.killable_behavior.apply_cd()
+
     def handle_movement(self, dt: float):
+
         state = self.chase_behavior.state
-        if state == "idle":
+        if self.killable_behavior.cd != 0:
+            self.vx = -dt * 300
+        elif state == "idle":
             self.vx = 0
             self.vy = 0
         elif state == "wait" or state == "attack":

@@ -9,6 +9,7 @@ from src.base.character import Character
 from src.entities.behaviors import KillableBehavior
 from src.loader import SharedData
 from src.settings import KNIGHT_EID
+from src.utils import flicker, silhouette_effect
 
 HEAD_TURN_NONE = 0
 HEAD_TURN_LEFT = -1
@@ -167,4 +168,6 @@ class Knight(Character):
         if self.flipped:
             frame = pygame.transform.flip(frame, True, False)
         frame, blit_x, blit_y = self.get_blit_pos(frame, offset)
+        if self.killable_behavior.cd != 0:
+            frame = silhouette_effect(frame)
         surface.blit(frame, (blit_x, blit_y))
